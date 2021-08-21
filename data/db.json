@@ -1,0 +1,30 @@
+{
+	"petiscos": [
+		{
+			"id": 1,
+			"nome": "Fritas",
+			"descricao": "Batatas, fritas em banha de porco",
+			"valor": "20,00"
+		},
+		{
+			"id": 2,
+			"nome": "Iscas de filé",
+			"descricao": "Batatas, fritas em banha de porco",
+			"valor": "20,00"
+		}
+	],
+	"drinks": {
+		"Cerveja": {
+			"id": 1
+		}
+	},
+	"pedidos": [
+		{
+			"id": 1,
+			"itens": [
+				1,
+				2
+			]
+		}
+	]
+}
