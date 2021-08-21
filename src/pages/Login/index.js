@@ -1,6 +1,5 @@
 import {
     Redirect,
-    Switch
 } from 'react-router-dom';
 import './index.css';
 import React, { useState } from 'react';

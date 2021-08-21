@@ -7,7 +7,18 @@ import {
 import Home from './pages/Home';
 import Login from './pages/Login';
 
+let menu = {
+  petiscos: {
+    Fritas: {
+      nome: 'Fritas',
+      ingredientes: 'Batatas, fritas em banha de porco',
+      valor: '20,00'
+    }
+  }
+};
+
 function App() {
+
   return (
     <Router>
       <div className="App">
@@ -17,5 +28,5 @@ function App() {
     </Router>
   );
 }
-
+export { menu };
 export default App;

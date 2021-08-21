@@ -2,6 +2,7 @@ import React from 'react';
 import {
     Redirect,
 } from 'react-router-dom';
+import { menu } from '../../App';
 import './index.css';
 
 export default function Home() {
@@ -9,6 +10,6 @@ export default function Home() {
         return <Redirect to={'/login'} />
     }
     return (
-        <h1 className="teste">Deu bom</h1>
+        <h1 className="teste">{menu.petiscos.Fritas.valor}</h1>
     )
 }
