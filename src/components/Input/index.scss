@@ -1,22 +1,41 @@
 .input-div{
 	display: flex;
 	border-bottom: 1px solid #E88643;
+	padding: 20px 20px 0px;
+	caret-color:#E88643;
+	background-color: rgba(0,0,0,0);
+	margin:20px;
+	height:30px;
+	input.input{
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: 200;
+		font-size: 14px;
+		line-height: 16px;
+		border:none;
+		align-items: center;
+		width: 100%;
+		
+	}
+
+	
+	.input:focus{
+		border:none;
+		outline: none;
+	}
+
 	.input-icon{
-		width:95%;
+		width:98%;
 		border: none;
 		outline: none;
 		background-color: black;
 		color: white;
+		padding-right: 2px;
 	}
-	.input-icon{
-		width:100%;
-		border: none;
-		outline: none;
-		background-color: black;
-		color: white;
-	}
+	
 	.icon{
 		color: #E88643;
-		width:5%;
+		width:28.5px;
+		height:28.5px;
 	}
 }
