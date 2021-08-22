@@ -6,6 +6,7 @@ import './index.scss';
 import TextInput from '../../components/TextInput';
 import Header from '../../components/Header';
 import OrderCard from '../../components/OrderCard';
+import OrderItem from '../../components/OrderItem';
 
 export default function Home() {
 
@@ -39,11 +40,14 @@ export default function Home() {
 					table: 1,
 					total: 100,
 					status:'open'}}/>
-					<OrderCard orderInfo={{
+			<OrderCard orderInfo={{
 					cpf:'029.430.470-31',
 					table: 2,
 					total: 300,
 					status:'closed'}}/>
+
+			<OrderItem orderItem={{itemName:'Fritas', price:20, hour:'10:00'}}/>
+			<OrderItem orderItem={{itemName:'Tabua de frios', price:50, hour:'10:00'}}/>
 		</>
 	)
 }
