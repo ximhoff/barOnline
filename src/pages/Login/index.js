@@ -2,7 +2,7 @@ import {
     Redirect,
 } from 'react-router-dom';
 import './index.css';
-import Input from '../../components/Input/index.js';
+import TextInput from '../../components/TextInput';
 import React, { useState } from 'react';
 import { MdSearch } from 'react-icons/md';
 
@@ -32,7 +32,7 @@ export default function Login() {
         <div className="content">
             <h1>login</h1>
             <label>CPF</label>
-            <Input
+            <TextInput
                 text="asdf"
                 handleValue={handleCpf}
                 Icon={MdSearch}
