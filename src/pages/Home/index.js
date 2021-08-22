@@ -9,7 +9,7 @@ export default function Home() {
 	const [produtos, setProdutos] = useState([]);
 
 	useEffect(() => {
-		fetch('http://localhost:8000/petiscos')
+		fetch('http://localhost:8000/itens')
 			.then(response => response.json())
 			.then(data => setProdutos(data))
 	}, [])
@@ -19,10 +19,10 @@ export default function Home() {
 	}
 
 	return (
-		<>
-			{produtos.map((produto, index) => {
-				return <h1 className="teste" key="index">{produto.nome}</h1>
+		<div>
+			{produtos.map((produto, i) => {
+				return <h1 className="teste" key={i}>{produto.nome}</h1>
 			})}
-		</>
+		</div>
 	)
 }

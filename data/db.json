@@ -1,23 +1,22 @@
 {
-	"petiscos": [
+	"itens": [
 		{
 			"id": 1,
 			"nome": "Fritas",
 			"descricao": "Batatas, fritas em banha de porco",
-			"valor": "20,00"
+			"valor": "20,00",
+			"categoria": "pestiscos"
 		},
 		{
 			"id": 2,
 			"nome": "Iscas de filé",
 			"descricao": "Batatas, fritas em banha de porco",
 			"valor": "20,00"
-		}
-	],
-	"drinks": {
-		"Cerveja": {
+		},
+		{
 			"id": 1
 		}
-	},
+	],
 	"pedidos": [
 		{
 			"id": 1,
