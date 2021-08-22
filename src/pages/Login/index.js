@@ -14,9 +14,14 @@ export default function Login() {
     }
 
     const logar = () => {
-        localStorage.setItem('login', true);
-        localStorage.setItem('cpf', cpf);
-        window.location.reload();
+        if (cpf.length === 11) {
+            localStorage.setItem('login', true);
+            localStorage.setItem('cpf', cpf);
+            window.location.reload();
+        } else {
+            alert('Insira um cpf válido!')
+            window.location.reload();
+        }
     };
 
     const handleCpf = (e) => {

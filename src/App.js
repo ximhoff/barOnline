@@ -1,4 +1,3 @@
-import './App.css';
 import {
   BrowserRouter as Router,
   Route,
@@ -16,6 +15,6 @@ function App() {
         <Route path="/login" exact component={Login} />
       </div>
     </Router>
-  );
+  )
 }
 export default App;

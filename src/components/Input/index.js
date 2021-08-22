@@ -1,14 +1,7 @@
-import './index.css';
-import React, { useEffect, useState } from 'react';
-import SearchIcon from '../../assets/icons/search.jpeg';
+import './index.scss';
+import React from 'react';
 
 export default function Input({ text, handleValue, Icon }) {
-	const [text, setText] = useState('');
-	// <input
-	//     type="text"
-	//     className="input"
-	// />
-
 	return (
 		<div className="input-div">
 			<input

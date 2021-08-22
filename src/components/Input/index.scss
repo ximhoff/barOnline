@@ -1,13 +1,22 @@
 .input-div{
+	display: flex;
 	border-bottom: 1px solid #E88643;
 	.input-icon{
 		width:95%;
 		border: none;
 		outline: none;
 		background-color: black;
+		color: white;
+	}
+	.input-icon{
+		width:100%;
+		border: none;
+		outline: none;
+		background-color: black;
+		color: white;
 	}
 	.icon{
-		color:white;
+		color: #E88643;
 		width:5%;
 	}
 }

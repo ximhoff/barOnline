@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import {
-	Redirect,
-} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import Button from '../../components/Button';
+import { MdAdd } from 'react-icons/md'
 import './index.css';
 
 export default function Home() {
@@ -19,10 +19,12 @@ export default function Home() {
 	}
 
 	return (
-		<div>
+		<>
 			{produtos.map((produto, i) => {
 				return <h1 className="teste" key={i}>{produto.nome}</h1>
 			})}
-		</div>
+			<Button name="Adicionar" onClick={(e) => console.log(e)} Icon={MdAdd} />
+			<Button name="Teste sem icone" onClick={(e) => console.log(e)} />
+		</>
 	)
 }
