@@ -1,8 +1,41 @@
 .content{
     color: white;
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.central-block{
+    padding-top: 40%;
+    color: white;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .input{
     background-color:black;
     color: white;
+}
+
+.resize-button{
+    width: 85%;
+}
+
+.resize-input{
+    width: 100%;
+}
+
+.label{
+    font-style: normal;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    display: flex;
+    line-height: 18px;
+    text-align: center;
+    align-items: flex-end;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
 }

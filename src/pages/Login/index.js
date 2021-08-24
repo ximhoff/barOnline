@@ -3,6 +3,7 @@ import {
 } from 'react-router-dom';
 import './index.css';
 import TextInput from '../../components/TextInput';
+import Button from '../../components/Button';
 import React, { useState } from 'react';
 import { MdSearch } from 'react-icons/md';
 
@@ -30,14 +31,27 @@ export default function Login() {
 
     return (
         <div className="content">
-            <h1>login</h1>
-            <label>CPF</label>
-            <TextInput
-                text="asdf"
-                handleValue={handleCpf}
-                Icon={MdSearch}
-            />
-            <button onClick={logar}>Acessar Comanda</button>
+            <div>
+                <h1>Comanda</h1>
+            </div>
+            <div className="central-block">
+                <label className="label">CPF</label>
+                <div className="resize-input">
+                    <TextInput
+                        text="asdf"
+                        handleValue={handleCpf}
+                        Icon={MdSearch}
+                        placeholder="Insira o CPF para acessar a comanda"
+                    />
+                </div>
+                <div className="resize-button">
+                    <Button
+                        onClick={logar}
+                        name="Acessar Comanda"
+                        className="center-button"
+                    />
+                </div>
+            </div>
         </div>
     )
 }
