@@ -1,0 +1,46 @@
+
+.order-item{
+    background-color: rgba(0, 0, 0, 0);
+    color:white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:10px;
+    margin:10px auto;
+    border: solid #E88643;
+    border-width: 0px 0px 1px;
+    flex-direction: column;
+    width: 90%;
+
+    .row{
+        width:100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        margin-left: 50px;
+    }
+   
+    .col{
+        width: 30%;
+        position: relative;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        flex-direction: row;
+        text-align: center;
+
+    }
+
+    .icon{
+        color:#E88643;
+        width:20.5px;
+        height: 20.5px;
+    }
+
+    .hightlight-text{
+        font-weight: bold;
+        letter-spacing: 0.1em;
+    }
+
+}

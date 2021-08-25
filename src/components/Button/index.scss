@@ -8,8 +8,8 @@
     display: flex;
     margin:20px auto;
     width:90%;
-    height:50px;
-
+    max-height: 30px;
+    min-height: 30px;
     align-items: center;
     letter-spacing: 0.25em;
     text-transform: capitalize;
