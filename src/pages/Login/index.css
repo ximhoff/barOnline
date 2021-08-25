@@ -3,15 +3,8 @@
     display:flex;
     justify-content: center;
     flex-wrap: wrap;
-}
-
-.central-block{
-    padding-top: 40%;
-    color: white;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    margin-top: 40%;
+    width: 100%;
 }
 
 .input{

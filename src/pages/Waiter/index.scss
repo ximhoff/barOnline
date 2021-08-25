@@ -1,0 +1,33 @@
+.container{
+  color:white;
+  margin-top:0;
+  display: flex;
+  flex-wrap: wrap;
+  .input{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .label{
+    width: 100%;
+    padding-top: 15%;
+    justify-content: center;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: 0.1em;
+
+    color: #FFFFFF;
+
+  }
+  .new-order{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
+}

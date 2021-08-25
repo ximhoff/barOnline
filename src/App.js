@@ -6,6 +6,7 @@ import DummyPage from './pages/DummyPage';
 
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Waiter from './pages/Waiter';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" exact component={Home} />
         <Route path="/dummy" exact component={DummyPage} />
         <Route path="/login" exact component={Login} />
+        <Route path="/waiter" exact component={Waiter} />
       </div>
     </Router>
   )

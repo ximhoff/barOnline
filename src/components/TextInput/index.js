@@ -10,7 +10,7 @@ export default function TextInput({ placeholder, handleValue, Icon }) {
 				onChange={handleValue}
 				className={Icon ? 'input input-icon' : 'input'}
 			/>
-			{Icon &&<Icon className='icon' />}
+			{Icon && <Icon className='icon' />}
 		</div>
 	)
 }

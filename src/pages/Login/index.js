@@ -3,9 +3,9 @@ import {
 } from 'react-router-dom';
 import './index.css';
 import TextInput from '../../components/TextInput';
+import Header from '../../components/Header';
 import Button from '../../components/Button';
 import React, { useState } from 'react';
-import { MdSearch } from 'react-icons/md';
 
 export default function Login() {
     const [cpf, setCpf] = useState('');
@@ -30,17 +30,14 @@ export default function Login() {
     }
 
     return (
-        <div className="content">
-            <div>
-                <h1>Comanda</h1>
-            </div>
-            <div className="central-block">
+        <>
+            <Header title="Comanda" />
+            <div className="content">
                 <label className="label">CPF</label>
                 <div className="resize-input">
                     <TextInput
                         text="asdf"
                         handleValue={handleCpf}
-                        Icon={MdSearch}
                         placeholder="Insira o CPF para acessar a comanda"
                     />
                 </div>
@@ -52,6 +49,6 @@ export default function Login() {
                     />
                 </div>
             </div>
-        </div>
+        </>
     )
 }
