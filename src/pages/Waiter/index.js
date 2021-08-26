@@ -5,6 +5,7 @@ import { MdSearch, MdAdd } from 'react-icons/md';
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import './index.scss';
+import ScrollView from '../../components/ScrollView';
 
 export default function Waiter() {
   const [orders, setOrders] = useState([])
@@ -20,38 +21,43 @@ export default function Waiter() {
 
   return (
     <>
-      <Header title={'Comandas'} />
+      <Header title='Comandas' />
       <div className="container">
-        <div className="input">
+        <div className="command-search-menu">
           <TextInput
             placeholder='Número da comanda'
             handleValue={(e) => console.log(e)}
             Icon={MdSearch}
           />
         </div>
-        {orders.map((order, index) => {
+
+       
+        <ScrollView Content={orders.map((order, index) => {
           return <OrderCard
             orderInfo={{
               cpf: order.costumer,
               table: order.table,
               total: 300,
               status: order.status
-            }}
+            }} onClick={(e) => console.log(e)}
             key={index}
           />
-        })}
-        <label className="label">CPF</label>
-        <div className="new-order">
-          <TextInput
-            placeholder="Insira o CPF para criar uma nova comanda"
-            handleValue={(e) => console.log(e)}
+        })}/>
+       
+      <div className='new-order-container'>
+          <label className="label">CPF</label>
+          <div className="new-order">
+            <TextInput className="center-text"
+              placeholder="Insira o CPF para criar uma nova comanda"
+              handleValue={(e) => console.log(e)}
+            />
+          </div>
+          <Button
+            name="Adicionar Comanda"
+            onClick={() => alert('Faz nada')}
+            Icon={MdAdd}
           />
         </div>
-        <Button
-          name="Ir para outra página"
-          onClick={() => alert('Faz nada')}
-          Icon={MdAdd}
-        />
       </div>
     </>
   )

@@ -12,12 +12,12 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
+      <>
         <Route path="/" exact component={Home} />
         <Route path="/dummy" exact component={DummyPage} />
         <Route path="/login" exact component={Login} />
         <Route path="/waiter" exact component={Waiter} />
-      </div>
+      </>
     </Router>
   )
 }

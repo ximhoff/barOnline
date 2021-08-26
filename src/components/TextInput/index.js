@@ -1,9 +1,9 @@
 import './index.scss';
 import React from 'react';
 
-export default function TextInput({ placeholder, handleValue, Icon }) {
+export default function TextInput({ placeholder, handleValue, Icon, className }) {
 	return (
-		<div className="input-div">
+		<div className={"input-div " + className || ""}>
 			<input
 				type='text'
 				placeholder={placeholder}

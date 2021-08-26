@@ -1,8 +1,8 @@
 
 import './index.scss'
-const OrderCard = ({orderInfo}) =>{
+const OrderCard = ({orderInfo, onClick}) =>{
     return (
-        <div className='order-card'>
+        <div className='order-card' onClick={onClick}>
             <div className='row'>
                 <div className='col'>CPF: {orderInfo.cpf}</div>
                 <div className='col'>
