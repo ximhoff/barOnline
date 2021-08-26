@@ -1,0 +1,44 @@
+.container{
+  color:white;
+  margin-top:0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 85%;
+
+  .command-search-menu{
+    display: flex;
+    justify-content: flex-end;
+    padding-left: 30%;
+  }
+
+  .new-order-container{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    .label{
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 18px;
+      letter-spacing: 0.1em;
+      color: #FFFFFF;
+
+    }
+
+    .new-order{
+      width: 100%;
+      display: block;
+      margin: 0;
+
+
+      .center-text input{
+        text-align: center;
+      }
+    }
+}
+}

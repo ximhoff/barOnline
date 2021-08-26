@@ -1,29 +1,94 @@
 {
-	"itens": [
+	"items": [
 		{
 			"id": 1,
-			"nome": "Fritas",
-			"descricao": "Batatas, fritas em banha de porco",
-			"valor": "20,00",
-			"categoria": "pestiscos"
+			"name": "Fritas",
+			"description": "Batatas, fritas em banha de porco",
+			"value": "20,00"
 		},
 		{
 			"id": 2,
-			"nome": "Iscas de filé",
-			"descricao": "Batatas, fritas em banha de porco",
-			"valor": "20,00"
+			"name": "Iscas de filé",
+			"description": "Batatas, fritas em banha de porco",
+			"value": "20,00"
 		},
 		{
-			"id": 1
+			"id": 3,
+			"name": "Asdf",
+			"description": "As, df",
+			"value": "20,00"
 		}
 	],
-	"pedidos": [
+	"orders": [
 		{
 			"id": 1,
-			"itens": [
+			"costumer": "03980737080",
+			"table": 1,
+			"items": [
 				1,
 				2
-			]
+			],
+			"status": "open"
+		},
+		{
+			"id": 2,
+			"costumer": "04980737080",
+			"table": 2,
+			"items": [
+				1,
+				3
+			],
+			"status": "open"
+		},
+		{
+			"id": 2,
+			"costumer": "04980737080",
+			"table": 2,
+			"items": [
+				1,
+				3
+			],
+			"status": "open"
+		},
+		{
+			"id": 2,
+			"costumer": "04980737080",
+			"table": 2,
+			"items": [
+				1,
+				3
+			],
+			"status": "open"
+		},
+		{
+			"id": 2,
+			"costumer": "04980737080",
+			"table": 2,
+			"items": [
+				1,
+				3
+			],
+			"status": "open"
+		},
+		{
+			"id": 2,
+			"costumer": "04980737080",
+			"table": 2,
+			"items": [
+				1,
+				3
+			],
+			"status": "open"
+		},
+		{
+			"id": 2,
+			"costumer": "04980737080",
+			"table": 2,
+			"items": [
+				1,
+				3
+			],
+			"status": "open"
 		}
 	]
 }
