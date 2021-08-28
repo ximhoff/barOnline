@@ -18,6 +18,11 @@ export default function Drinks() {
   const [baseIsEnable, setBaseIsEnable] = useState(false)
   const [tastesIsEnable, setTastesIsEnable] = useState(false)
   const [fruitAndBarriesIsEnable, setFruitAndBarriesIsEnable] = useState(false)
+  const [glassType, setGlassType] = useState('')
+
+  const handleGlassType = (e) => {
+    setGlassType(e.target.value)
+  }
 
   return (
     <>
@@ -33,16 +38,26 @@ export default function Drinks() {
           {!glassTypeIsEnable ? <MdArrowForward /> : <MdArrowDownward />}
         </div>
         {glassTypeIsEnable &&
-          <div className="dropped">
-            <Radio
-              checked={true}
-              onChange={(e) => setGlassTypeIsEnable(true)}
-              value="a"
-              name="radio-button-demo"
-              inputProps={{ 'aria-label': 'A' }}
-              label="asdf"
-            />
-          </div>
+          <>
+            <div className="dropped">
+              <Radio
+                value="Copo 1"
+                checked={glassType === "Copo 1"}
+                color='secondary'
+                onChange={handleGlassType}
+              />
+              <label>Copo 1</label>
+            </div>
+            <div className="dropped">
+              <Radio
+                value="Copo 2"
+                checked={glassType === "Copo 2"}
+                color='primary'
+                onChange={handleGlassType}
+              />
+              <label>Copo 1</label>
+            </div>
+          </>
         }
         <div
           className="item"
