@@ -11,13 +11,14 @@ const MenuItem = ({title,description, price, moneyButton, infoButton}) =>{
     return (
             <div className='item'>
                 <div className='item-info'>
-                    <h1 className='item-title'>{title}</h1>
-                    <h2 className='item-description'>{description}</h2>
+                    <div className='item-title'>{title}</div>
+                    <div className='item-description'>{description}</div>
                 </div>
             
-                {moneyButton && <MdAttachMoney className='price-icon'/>}
-                <h1 className='price-value'>{price}</h1>
-                
+                <div className='price-item'>
+                    {moneyButton && <MdAttachMoney className='price-icon'/>}
+                    <div className='price-value'>{price}</div>
+                </div>
                 {infoButton && <MdAdd className='info-button' onClick={() => addItemInfo()}/>}       
             </div>
     )

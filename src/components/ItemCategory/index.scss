@@ -1,21 +1,19 @@
 .item-category{
-    width: 95%;
+    width: 90%;
     height: auto;
     display:flex;
-    margin:20px;
+    margin:20px auto;
     justify-content:space-evenly;
     flex-direction:column;
-    overflow-y:visible;
     .category-title{
-        color: gray;
-        position: sticky;
+        color: grey;
         text-align: left;
-        font-weight:100;
+        font-weight:bold;
         font-family: Roboto;
         font-style: normal;
         font-size: 18px;
         padding-bottom: 20px;
-        padding-left: 15%;
+        padding-left: 40px;
         border-bottom: 1px solid #E88643;
     }
     .item-list{

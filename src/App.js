@@ -16,7 +16,6 @@ function App() {
     <Router>
       <>
         <Route path="/" exact component={Home} />
-        <Route path="/dummy" exact component={DummyPage} />
         <Route path="/login" exact component={Login} />
         <Route path="/waiter" exact component={Waiter} />
         <Route path="/clientmenu" exact component={ClientMenu}/>

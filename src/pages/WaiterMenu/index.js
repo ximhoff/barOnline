@@ -92,7 +92,7 @@ export default function WaiterMenu(){
     const { onMouseDown } = useDraggableScroll(ref, { direction: 'vertical' });
 
     return(
-        <div>
+        <div ref={ref} onMouseDown={onMouseDown} className='scroll-container variable-height'>
             <Header title='Cardápio'/>
                 <div className="item-search-menu">
                 <TextInput
@@ -102,11 +102,11 @@ export default function WaiterMenu(){
                 />
                 </div>
                 
-                <div ref={ref} onMouseDown={onMouseDown} className='waiter-menu-list' >
+                <div  className='waiter-menu-list' >
                     {products.map((items, index) => {
                         return <MenuItem title={items.title} price={items.value}
                             infoButton={Button} 
-                            moneyButton={Button} 
+                            moneyButton={Button} key={index}
                         /> 
                     })}
                 </div>

@@ -14,22 +14,17 @@
 
   
 .waiter-menu-list{
-    overflow-y: auto;
-    width: 100%;
+    width: 90%;
     display: flex;
-    align-items: center;
     flex-direction: column; 
-    scrollbar-width: none;
-    -ms-overflow-style: none;  
 }
-    
-.waiter-menu-list::-webkit-scrollbar {
-    display: none;
-}
+
 
 .item-search-menu{
         width: 100%;
 }
 
 
-
+.variable-height{
+    height: 100%;
+  }

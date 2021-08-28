@@ -6,6 +6,8 @@ import ScrollView from '../../components/ScrollView';
 import MenuItem from '../../components/MenuItem';
 import ItemCategory from '../../components/ItemCategory';
 import HeaderNotes from '../../components/HeaderNotes';
+import useDraggableScroll from 'use-draggable-scroll';
+import {useRef} from 'react'
 
 export default function ClientMenu(){
 
@@ -30,18 +32,23 @@ export default function ClientMenu(){
     //produtcs.push({ name: 'dummy', description:'dummydummydummy', price:'50'})
     //array.push({ name: '', description:'', price:''})
 
+
+    const ref = useRef(null);
+
+    const { onMouseDown } = useDraggableScroll(ref, { direction: 'vertical' });
+
     return(
-        <>
+        <div  ref={ref} onMouseDown={onMouseDown} className='variable-height scroll-container '>
             <Header title='Cardápio'/>
-            <div className='header-notes'>
+            <div className='menu-tooltip'>
                 <HeaderNotes title='Martini' description='Popularizado pelos filmes de James Bond, 007, na década de 1970'/>
             </div>
             <div className='menu-list'>
                 {itensCategories.map((itens, index) => {
-                    return < ItemCategory title={itens.name} /> 
+                    return < ItemCategory title={itens.name} key={index}/> 
                     })}
             </div>   
-        </>
+        </div>
     )
 
 }

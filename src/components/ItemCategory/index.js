@@ -48,7 +48,7 @@ const ItemCategory = ({title, itens}) =>{
                 {products.map((option, index) => {
                     return < MenuItem title={option.title} description={option.description} price={option.value}
                          infoButton={Button}
-                         moneyButton={Button}/>
+                         moneyButton={Button} key={index}/>
                 })}
                 </li>
             </div>
