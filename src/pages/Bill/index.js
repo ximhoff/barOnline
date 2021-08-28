@@ -51,7 +51,7 @@ export default function Bill() {
 
         <div className='new-order-container'>
           <Button
-            name="Novo Pedido"
+            name="New Item"
             onClick={() => alert('Faz nada')}
             Icon={MdAdd}
           />
