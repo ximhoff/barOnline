@@ -7,6 +7,8 @@ import DummyPage from './pages/DummyPage';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Waiter from './pages/Waiter';
+import ClientMenu from './pages/ClientMenu';
+import WaiterMenu from './pages/WaiterMenu';
 
 function App() {
 
@@ -17,6 +19,8 @@ function App() {
         <Route path="/dummy" exact component={DummyPage} />
         <Route path="/login" exact component={Login} />
         <Route path="/waiter" exact component={Waiter} />
+        <Route path="/clientmenu" exact component={ClientMenu}/>
+        <Route path="/waitermenu" exact component={WaiterMenu}/>
       </>
     </Router>
   )

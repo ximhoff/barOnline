@@ -1,0 +1,26 @@
+.item-category{
+    width: 95%;
+    height: auto;
+    display:flex;
+    margin:20px;
+    justify-content:space-evenly;
+    flex-direction:column;
+    overflow-y:visible;
+    .category-title{
+        color: gray;
+        position: sticky;
+        text-align: left;
+        font-weight:100;
+        font-family: Roboto;
+        font-style: normal;
+        font-size: 18px;
+        padding-bottom: 20px;
+        padding-left: 15%;
+        border-bottom: 1px solid #E88643;
+    }
+    .item-list{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+}
