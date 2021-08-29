@@ -6,6 +6,7 @@ import { MdAttachMoney  } from 'react-icons/md'
 import Button from '../../components/Button';
 import './index.scss';
 import ScrollView from '../../components/ScrollView';
+import {Redirect} from 'react-router'
 
 export default function Bill() {
   const [orders, setOrders] = useState([])
@@ -17,6 +18,9 @@ export default function Bill() {
   const getOrders = async () => {
     const response = await fetch('http://localhost:8000/orders')
     setOrders(await response.json());
+  }
+  if (!sessionStorage.getItem('login')){
+    return <Redirect exact to="/login" />;
   }
 
   return (

@@ -12,6 +12,10 @@ import {
   MdAdd
 } from 'react-icons/md'
 import './index.scss'
+import {Redirect} from 'react-router'
+
+
+
 
 export default function Drinks() {
   const [glassTypeIsEnable, setGlassTypeIsEnable] = useState(false)
@@ -35,6 +39,11 @@ export default function Drinks() {
 
   const handleGlassType = (e) => {
     setGlassType(e.target.value)
+  }
+
+
+  if (!sessionStorage.getItem('login')){
+    return <Redirect exact to="/login" />;
   }
 
   return (

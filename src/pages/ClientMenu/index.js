@@ -8,6 +8,7 @@ import ItemCategory from '../../components/ItemCategory';
 import HeaderNotes from '../../components/HeaderNotes';
 import useDraggableScroll from 'use-draggable-scroll';
 import {useRef} from 'react'
+import {Redirect} from 'react-router'
 
 export default function ClientMenu(){
 
@@ -36,6 +37,11 @@ export default function ClientMenu(){
     const ref = useRef(null);
 
     const { onMouseDown } = useDraggableScroll(ref, { direction: 'vertical' });
+
+
+    if (!sessionStorage.getItem('login')){
+        return <Redirect exact to="/login" />;
+      }
 
     return(
         <div className='scroll-container variable-height '>

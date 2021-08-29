@@ -6,18 +6,28 @@ import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import './index.scss';
 import ScrollView from '../../components/ScrollView';
+import { Redirect } from 'react-router';
 
 export default function Waiter() {
+
   const [orders, setOrders] = useState([])
 
   useEffect(() => {
     getOrders();
   }, [])
 
+
   const getOrders = async () => {
     const response = await fetch('http://localhost:8000/orders')
     setOrders(await response.json());
   }
+
+
+  if (!sessionStorage.getItem('waiter')){
+    return <Redirect exact to="/login" />;
+  }
+
+
 
   return (
     <>
