@@ -7,6 +7,7 @@ import Button from '../../components/Button';
 import './index.scss';
 import ScrollView from '../../components/ScrollView';
 import { useHistory } from 'react-router-dom';
+import {Redirect} from 'react-router'
 
 export default function Bill() {
   const history = useHistory()
@@ -32,6 +33,9 @@ export default function Bill() {
     }
     setItems(aux);
     setTotal(sum)
+  }
+  if (!sessionStorage.getItem('login')){
+    return <Redirect exact to="/login" />;
   }
 
   return (

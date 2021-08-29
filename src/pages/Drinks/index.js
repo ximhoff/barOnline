@@ -12,6 +12,10 @@ import {
   MdAdd
 } from 'react-icons/md'
 import './index.scss'
+import {Redirect} from 'react-router'
+
+
+
 
 export default function Drinks() {
   const [glassTypeIsEnable, setGlassTypeIsEnable] = useState(false)
@@ -59,6 +63,11 @@ export default function Drinks() {
   const getFruitsAndBarries = async () => {
     const response = await fetch('http://localhost:8000/fruitsAndBarries')
     setFruitsAndBarries(await response.json());
+
+  }
+  
+  if (!sessionStorage.getItem('login')){
+    return <Redirect exact to="/login" />;
   }
 
   return (

@@ -6,8 +6,10 @@ import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import './index.scss';
 import ScrollView from '../../components/ScrollView';
+import { Redirect } from 'react-router';
 
 export default function Waiter() {
+
   const [orders, setOrders] = useState([])
   const [items, setItems] = useState([])
   const [totals, setTotals] = useState([])
@@ -17,6 +19,7 @@ export default function Waiter() {
     getItems();
     calcTotals();
   }, [items])
+
 
   const getOrders = async () => {
     const response = await fetch('http://localhost:8000/orders')
@@ -42,6 +45,13 @@ export default function Waiter() {
     })
     setTotals(data);
   }
+
+
+  if (!sessionStorage.getItem('waiter')){
+    return <Redirect exact to="/login" />;
+  }
+
+
 
   return (
     <>

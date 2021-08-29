@@ -4,7 +4,8 @@ import './index.scss';
 import ItemCategory from '../../components/ItemCategory';
 import HeaderNotes from '../../components/HeaderNotes';
 import useDraggableScroll from 'use-draggable-scroll';
-import { useRef } from 'react'
+import {useRef} from 'react'
+import {Redirect} from 'react-router'
 
 export default function ClientMenu() {
 
@@ -41,7 +42,12 @@ export default function ClientMenu() {
 
     const { onMouseDown } = useDraggableScroll(ref, { direction: 'vertical' });
 
-    return (
+
+    if (!sessionStorage.getItem('login')){
+        return <Redirect exact to="/login" />;
+      }
+
+    return(
         <div className='scroll-container variable-height '>
             <Header title='Cardápio' />
             <div ref={ref} onMouseDown={onMouseDown} className='content-wrapper variable-height scroll-container '>
@@ -58,10 +64,3 @@ export default function ClientMenu() {
     )
 
 }
-
-                    // inside the scrollview
-                    // return <MenuItem title={item.title} description={item.description} price={item.value}
-                    //     infoButton={Button}
-                    //     moneyButton={Button}
-                    // />
-                    // })}/>

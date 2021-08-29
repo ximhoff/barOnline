@@ -6,7 +6,12 @@ import { MdSearch } from 'react-icons/md';
 import TextInput from '../../components/TextInput';
 import MenuItem from '../../components/MenuItem';
 import useDraggableScroll from 'use-draggable-scroll';
+<<<<<<< HEAD
 import { useRef } from 'react'
+=======
+import {useRef} from 'react'
+import { Redirect } from 'react-router';
+>>>>>>> 453477470797436eea8701b2194c5f7842b3c5ea
 
 export default function WaiterMenu() {
 
@@ -16,6 +21,7 @@ export default function WaiterMenu() {
         const response = await fetch('http://localhost:8000/items')
         setItems(await response.json());
     }
+
 
     var products = [15];
     products[0] = {};
@@ -32,6 +38,7 @@ export default function WaiterMenu() {
     products[2].title = 'dummy';
     products[2].description = 'dummy dummy dummy dummy';
     products[2].value = "65,00";
+<<<<<<< HEAD
 
     products[3] = {};
     products[3].title = 'dummy';
@@ -77,26 +84,26 @@ export default function WaiterMenu() {
     products[11].title = 'dummy';
     products[11].description = 'dummy dummy dummy dummy';
     products[11].value = "32,00";
+=======
+    
+    
+    const ref = useRef(null);
+>>>>>>> 453477470797436eea8701b2194c5f7842b3c5ea
 
-    products[12] = {};
-    products[12].title = 'dummy';
-    products[12].description = 'dummy dummy dummy dummy';
-    products[12].value = "32,00";
+    const { onMouseDown } = useDraggableScroll(ref, { direction: 'vertical' });
 
-    products[13] = {};
-    products[13].title = 'dummy';
-    products[13].description = 'dummy dummy dummy dummy';
-    products[13].value = "32,00";
+    if (!sessionStorage.getItem('waiter')){
+        return <Redirect exact to="/login" />;
+    }
 
-    products[14] = {};
-    products[14].title = 'dummy';
-    products[14].description = 'dummy dummy dummy dummy';
-    products[14].value = "32,00";
 
+<<<<<<< HEAD
 
     const ref = useRef(null);
 
     const { onMouseDown } = useDraggableScroll(ref, { direction: 'vertical' });
+=======
+>>>>>>> 453477470797436eea8701b2194c5f7842b3c5ea
 
     return (
 
