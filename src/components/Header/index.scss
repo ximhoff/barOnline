@@ -1,25 +1,32 @@
-.header{
-    height: 50px;
-    display:flex;
-    padding:10px;
-    align-items: center;
-    justify-content: center;
-    
-    .back-button{
-        display: float;
-        position: fixed;
-        color:#E88643;
-        height:30px;
-        width:30px;
-        left: 3%;
+.header-wrapper{
+    position: fixed;
+    background-color: black;
+    display: block;
+    width: 100%;
+    z-index: 2;
+    .header{
+        height: 50px;
+        display:flex    ;
         padding:10px;
+        align-items: center;
+        justify-content: center;
+
+        .back-button{
+            position: fixed;
+            color:#E88643;
+            height:30px;
+            width:30px;
+            left: 3%;
+            padding:10px;
+        }
+
+        .title
+        {
+            color: white;
+            text-align: center;
+            font-weight:400;
+            font-size: 18px;
+        }
     }
 
-    .title
-    {
-        color: white;
-        text-align: center;
-        font-weight:400;
-        font-size: 18px;
-    }
 }

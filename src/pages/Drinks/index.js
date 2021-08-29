@@ -40,99 +40,101 @@ export default function Drinks() {
   return (
     <>
       <Header title='Montar Drink' goBackButton={true} />
-      <div className="drinks">
-        <div className="title">Drink(numero)</div>
-        <div
-          className="item"
-          onClick={(e) => setGlassTypeIsEnable(!glassTypeIsEnable)}>
-          <label>
-            Glass Type
-          </label>
-          {!glassTypeIsEnable ? <MdArrowForward /> : <MdArrowDownward />}
-        </div>
-        {glassTypeIsEnable &&
-          <>
-            <div className="dropped">
-              <Radio
-                value="Copo 1"
-                checked={glassType === "Copo 1"}
-                color='primary'
-                onChange={handleGlassType}
-              />
-              <label>Copo 1</label>
-            </div>
-            <div className="dropped">
-              <Radio
-                value="Copo 2"
-                checked={glassType === "Copo 2"}
-                color='primary'
-                onChange={handleGlassType}
-              />
-              <label>Copo 2</label>
-            </div>
-          </>
-        }
-        <div
-          className="item"
-          onClick={(e) => setBaseIsEnable(!baseIsEnable)}>
-          <label>
-            Base
-          </label>
-          {!baseIsEnable ? <MdArrowForward /> : <MdArrowDownward />}
-        </div>
-        {baseIsEnable &&
-          <>
-            <div
-              className="dropped">
+      <div className='content-wrapper'>
+        <div className="drinks">
+          <div className="title">Drink(numero)</div>
+          <div
+            className="item"
+            onClick={(e) => setGlassTypeIsEnable(!glassTypeIsEnable)}>
+            <label>
+              Glass Type
+            </label>
+            {!glassTypeIsEnable ? <MdArrowForward /> : <MdArrowDownward />}
+          </div>
+          {glassTypeIsEnable &&
+            <>
+              <div className="dropped">
+                <Radio
+                  value="Copo 1"
+                  checked={glassType === "Copo 1"}
+                  color='primary'
+                  onChange={handleGlassType}
+                />
+                <label>Copo 1</label>
+              </div>
+              <div className="dropped">
+                <Radio
+                  value="Copo 2"
+                  checked={glassType === "Copo 2"}
+                  color='primary'
+                  onChange={handleGlassType}
+                />
+                <label>Copo 2</label>
+              </div>
+            </>
+          }
+          <div
+            className="item"
+            onClick={(e) => setBaseIsEnable(!baseIsEnable)}>
+            <label>
+              Base
+            </label>
+            {!baseIsEnable ? <MdArrowForward /> : <MdArrowDownward />}
+          </div>
+          {baseIsEnable &&
+            <>
+              <div
+                className="dropped">
 
-              <Checkbox
-                onChange={(e) => handleCheckbox(e)}
-                color="primary"
-                value={'teste 1'}
-              />
-              Teste 1
-            </div>
-            <div
-              className="dropped">
-              <Checkbox
-                onChange={(e) => handleCheckbox(e)}
-                color="primary"
-                value={'teste 2'}
-              />
-              Teste 2
-            </div>
-          </>
-        }
+                <Checkbox
+                  onChange={(e) => handleCheckbox(e)}
+                  color="primary"
+                  value={'teste 1'}
+                />
+                Teste 1
+              </div>
+              <div
+                className="dropped">
+                <Checkbox
+                  onChange={(e) => handleCheckbox(e)}
+                  color="primary"
+                  value={'teste 2'}
+                />
+                Teste 2
+              </div>
+            </>
+          }
 
-        <div
-          className="item"
-          onClick={(e) => setTastesIsEnable(!tastesIsEnable)}>
-          <label>
-            Tastes
-          </label>
-          {!tastesIsEnable ? <MdArrowForward /> : <MdArrowDownward />}
+          <div
+            className="item"
+            onClick={(e) => setTastesIsEnable(!tastesIsEnable)}>
+            <label>
+              Tastes
+            </label>
+            {!tastesIsEnable ? <MdArrowForward /> : <MdArrowDownward />}
+          </div>
+          {tastesIsEnable &&
+            <div className="dropped">asdfasdf</div>
+          }
+          <div
+            onClick={(e) => setFruitAndBarriesIsEnable(!fruitAndBarriesIsEnable)}
+            className="item">
+            <label>
+              Fruit And Barries
+            </label>
+            {!fruitAndBarriesIsEnable ? <MdArrowForward /> : <MdArrowDownward />}
+          </div>
+          {fruitAndBarriesIsEnable &&
+            <div className="dropped">asdfasdf</div>
+          }
         </div>
-        {tastesIsEnable &&
-          <div className="dropped">asdfasdf</div>
-        }
-        <div
-          onClick={(e) => setFruitAndBarriesIsEnable(!fruitAndBarriesIsEnable)}
-          className="item">
-          <label>
-            Fruit And Barries
-          </label>
-          {!fruitAndBarriesIsEnable ? <MdArrowForward /> : <MdArrowDownward />}
+        <div className='new-item'>
+          <Button
+            name="Novo Pedido"
+            onClick={() => alert('Faz nada')}
+            Icon={MdAdd}
+          />
         </div>
-        {fruitAndBarriesIsEnable &&
-          <div className="dropped">asdfasdf</div>
-        }
-      </div>
-      <div className='new-item'>
-        <Button
-          name="Novo Pedido"
-          onClick={() => alert('Faz nada')}
-          Icon={MdAdd}
-        />
       </div>
     </>
   )

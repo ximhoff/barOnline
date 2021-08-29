@@ -32,21 +32,23 @@ export default function Login() {
     return (
         <>
             <Header title="Comanda" />
-            <div className="content">
-                <label className="label">CPF</label>
-                <div className="resize-input">
-                    <TextInput
-                        text="asdf"
-                        handleValue={handleCpf}
-                        placeholder="Insira o CPF para acessar a comanda"
-                    />
-                </div>
-                <div className="resize-button">
-                    <Button
-                        onClick={logar}
-                        name="Acessar Comanda"
-                        className="center-button"
-                    />
+            <div className='content-wrapper'>
+                <div className="content">
+                    <label className="label">CPF</label>
+                    <div className="resize-input">
+                        <TextInput
+                            text="asdf"
+                            handleValue={handleCpf}
+                            placeholder="Insira o CPF para acessar a comanda"
+                        />
+                    </div>
+                    <div className="resize-button">
+                        <Button
+                            onClick={logar}
+                            name="Acessar Comanda"
+                            className="center-button"
+                        />
+                    </div>
                 </div>
             </div>
         </>

@@ -22,41 +22,43 @@ export default function Bill() {
   return (
     <>
       <Header title='Comanda' />
-      <div className="container">
-        <div className="bill-total">
-          <div className="row">
-            <div className="col-l">
-              <label className="label">
-                Itens da Comanda
-              </label>
-            </div>
-            <div className="col-r">
-            < MdAttachMoney />
-              <label>
-                 500,00
-              </label>
+      <div className='content-wrapper'>
+        <div className="container">
+          <div className="bill-total">
+            <div className="row">
+              <div className="col-l">
+                <label className="label">
+                  Itens da Comanda
+                </label>
+              </div>
+              <div className="col-r">
+              < MdAttachMoney />
+                <label>
+                  500,00
+                </label>
+              </div>
             </div>
           </div>
-        </div>
 
 
-        <ScrollView Content={orders.map((order, index) => {
-          return <OrderItem
-            orderItem={{
-              itemName: order.items.toString(),
-              price: 200,
-              hour: order.hour
-            }} onClick={(e) => console.log(e)}
-            key={index}
-          />
-        })} />
+          <ScrollView Content={orders.map((order, index) => {
+            return <OrderItem
+              orderItem={{
+                itemName: order.items.toString(),
+                price: 200,
+                hour: order.hour
+              }} onClick={(e) => console.log(e)}
+              key={index}
+            />
+          })} />
 
-        <div className='new-order-container'>
-          <Button
-            name="New Item"
-            onClick={() => alert('Faz nada')}
-            Icon={MdAdd}
-          />
+          <div className='new-order-container'>
+            <Button
+              name="New Item"
+              onClick={() => alert('Faz nada')}
+              Icon={MdAdd}
+            />
+          </div>
         </div>
       </div>
     </>

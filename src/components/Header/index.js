@@ -10,9 +10,11 @@ const Header = ({title, goBackButton}) =>{
     }
 
     return (
-        <div className='header'>
-            {goBackButton && <MdArrowBack className='back-button' onClick={() => returnToPreviousPage()}/>} 
-            <h1 className='title'>{title}</h1>
+        <div className='header-wrapper'>
+            <div className='header'>
+                {goBackButton && <MdArrowBack className='back-button' onClick={() => returnToPreviousPage()}/>} 
+                <h1 className='title'>{title}</h1>
+            </div>
         </div>
     )
 }
