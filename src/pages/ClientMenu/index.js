@@ -38,16 +38,18 @@ export default function ClientMenu(){
     const { onMouseDown } = useDraggableScroll(ref, { direction: 'vertical' });
 
     return(
-        <div  ref={ref} onMouseDown={onMouseDown} className='variable-height scroll-container '>
+        <div className='scroll-container variable-height '>
             <Header title='Cardápio'/>
-            <div className='menu-tooltip'>
-                <HeaderNotes title='Martini' description='Popularizado pelos filmes de James Bond, 007, na década de 1970'/>
+            <div ref={ref} onMouseDown={onMouseDown} className='content-wrapper variable-height scroll-container '>
+                <div className='menu-tooltip'>
+                    <HeaderNotes title='Martini' description='Popularizado pelos filmes de James Bond, 007, na década de 1970'/>
+                </div>
+                <div className='menu-list'>
+                    {itensCategories.map((itens, index) => {
+                        return < ItemCategory title={itens.name} key={index}/> 
+                        })}
+                </div>   
             </div>
-            <div className='menu-list'>
-                {itensCategories.map((itens, index) => {
-                    return < ItemCategory title={itens.name} key={index}/> 
-                    })}
-            </div>   
         </div>
     )
 

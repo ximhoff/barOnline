@@ -30,7 +30,7 @@ code {
 }
 
 .content-wrapper{
-
+  width:100%;
   position: relative;
   top:70px;
 }
