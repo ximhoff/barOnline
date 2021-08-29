@@ -22,41 +22,43 @@ export default function Waiter() {
   return (
     <>
       <Header title='Comandas' />
-      <div className="container">
-        <div className="command-search-menu">
-          <TextInput
-            placeholder='Número da comanda'
-            handleValue={(e) => console.log(e)}
-            Icon={MdSearch}
-          />
-        </div>
-
-       
-        <ScrollView Content={orders.map((order, index) => {
-          return <OrderCard
-            orderInfo={{
-              cpf: order.costumer,
-              table: order.table,
-              total: 300,
-              status: order.status
-            }} onClick={(e) => console.log(e)}
-            key={index}
-          />
-        })}/>
-       
-      <div className='new-order-container'>
-          <label className="label">CPF</label>
-          <div className="new-order">
-            <TextInput className="center-text"
-              placeholder="Insira o CPF para criar uma nova comanda"
+      <div className='content-wrapper'>
+        <div className="container">
+          <div className="command-search-menu">
+            <TextInput
+              placeholder='Número da comanda'
               handleValue={(e) => console.log(e)}
+              Icon={MdSearch}
             />
           </div>
-          <Button
-            name="Adicionar Comanda"
-            onClick={() => alert('Faz nada')}
-            Icon={MdAdd}
-          />
+
+        
+          <ScrollView Content={orders.map((order, index) => {
+            return <OrderCard
+              orderInfo={{
+                cpf: order.costumer,
+                table: order.table,
+                total: 300,
+                status: order.status
+              }} onClick={(e) => console.log(e)}
+              key={index}
+            />
+          })}/>
+        
+        <div className='new-order-container'>
+            <label className="label">CPF</label>
+            <div className="new-order">
+              <TextInput className="center-text"
+                placeholder="Insira o CPF para criar uma nova comanda"
+                handleValue={(e) => console.log(e)}
+              />
+            </div>
+            <Button
+              name="Adicionar Comanda"
+              onClick={() => alert('Faz nada')}
+              Icon={MdAdd}
+            />
+          </div>
         </div>
       </div>
     </>
