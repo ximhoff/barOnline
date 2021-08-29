@@ -9,14 +9,38 @@ import ScrollView from '../../components/ScrollView';
 
 export default function Waiter() {
   const [orders, setOrders] = useState([])
+  const [items, setItems] = useState([])
+  const [totals, setTotals] = useState([])
 
   useEffect(() => {
     getOrders();
-  }, [])
+    getItems();
+    calcTotals();
+  }, [items])
 
   const getOrders = async () => {
     const response = await fetch('http://localhost:8000/orders')
-    setOrders(await response.json());
+    const data = await response.json();
+    const aux = data.filter(order => order.status === 'open')
+    setOrders(aux);
+  }
+
+  const getItems = async () => {
+    const response = await fetch('http://localhost:8000/items')
+    setItems(await response.json());
+  }
+
+  const calcTotals = () => {
+    let data = [];
+    orders.forEach(order => {
+      let aux = 0;
+      order.items.forEach(i => {
+        const item = items.filter(item => item.id === i)[0];
+        aux += item.value;
+      })
+      data.push(aux);
+    })
+    setTotals(data);
   }
 
   return (
@@ -31,21 +55,18 @@ export default function Waiter() {
               Icon={MdSearch}
             />
           </div>
-
-        
           <ScrollView Content={orders.map((order, index) => {
             return <OrderCard
               orderInfo={{
                 cpf: order.costumer,
                 table: order.table,
-                total: 300,
+                total: totals[index],
                 status: order.status
               }} onClick={(e) => console.log(e)}
               key={index}
             />
-          })}/>
-        
-        <div className='new-order-container'>
+          })} />
+          <div className='new-order-container'>
             <label className="label">CPF</label>
             <div className="new-order">
               <TextInput className="center-text"

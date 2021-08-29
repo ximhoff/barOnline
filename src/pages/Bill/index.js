@@ -2,21 +2,36 @@ import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header';
 import OrderItem from '../../components/OrderItem';
 import { MdAdd } from 'react-icons/md';
-import { MdAttachMoney  } from 'react-icons/md'
+import { MdAttachMoney } from 'react-icons/md'
 import Button from '../../components/Button';
 import './index.scss';
 import ScrollView from '../../components/ScrollView';
+import { useHistory } from 'react-router-dom';
 
 export default function Bill() {
-  const [orders, setOrders] = useState([])
+  const history = useHistory()
+  const [order, setOrder] = useState([])
+  const [items, setItems] = useState([])
+  const [total, setTotal] = useState(0)
 
   useEffect(() => {
-    getOrders();
+    getOrder();
   }, [])
 
-  const getOrders = async () => {
+  const getOrder = async () => {
     const response = await fetch('http://localhost:8000/orders')
-    setOrders(await response.json());
+    let data = await response.json()
+    const filtered = data.filter(order => order.costumer === localStorage.getItem('cpf'))[0]
+    setOrder(filtered)
+    let aux = []
+    let sum = 0
+    for (let i = 0; i < filtered.items.length; i++) {
+      const response = await fetch(`http://localhost:8000/items/${filtered.items[i]}`)
+      aux.push(await response.json())
+      sum += aux[i].value
+    }
+    setItems(aux);
+    setTotal(sum)
   }
 
   return (
@@ -32,20 +47,20 @@ export default function Bill() {
                 </label>
               </div>
               <div className="col-r">
-              < MdAttachMoney />
+                < MdAttachMoney />
                 <label>
-                  500,00
+                  {total}
                 </label>
               </div>
             </div>
           </div>
 
 
-          <ScrollView Content={orders.map((order, index) => {
+          <ScrollView Content={items.map((item, index) => {
             return <OrderItem
               orderItem={{
-                itemName: order.items.toString(),
-                price: 200,
+                itemName: item.name,
+                price: item.value,
                 hour: order.hour
               }} onClick={(e) => console.log(e)}
               key={index}
@@ -55,7 +70,7 @@ export default function Bill() {
           <div className='new-order-container'>
             <Button
               name="New Item"
-              onClick={() => alert('Faz nada')}
+              onClick={() => history.push('/clientmenu')}
               Icon={MdAdd}
             />
           </div>

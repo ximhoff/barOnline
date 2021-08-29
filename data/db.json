@@ -4,19 +4,22 @@
 			"id": 1,
 			"name": "Fritas",
 			"description": "Batatas, fritas em banha de porco",
-			"value": "20,00"
+			"value": 10.00,
+			"category": "petisco"
 		},
 		{
 			"id": 2,
 			"name": "Iscas de filé",
 			"description": "Batatas, fritas em banha de porco",
-			"value": "20,00"
+			"value": 20.00,
+			"category": "categoria 2"
 		},
 		{
 			"id": 3,
 			"name": "Asdf",
 			"description": "As, df",
-			"value": "20,00"
+			"value": 30.00,
+			"category": "categoria 3"
 		}
 	],
 	"orders": [
@@ -74,6 +77,62 @@
 			],
 			"status": "open",
 			"hour": "20:00"
+		}
+	],
+	"glassTypes": [
+		{
+			"id": 1,
+			"name": "copo 1"
+		},
+		{
+			"id": 2,
+			"name": "copo 2"
+		},
+		{
+			"id": 3,
+			"name": "copo 3"
+		}
+	],
+	"bases": [
+		{
+			"id": 1,
+			"name": "base 1"
+		},
+		{
+			"id": 2,
+			"name": "base 2"
+		},
+		{
+			"id": 3,
+			"name": "base 3"
+		}
+	],
+	"tastes": [
+		{
+			"id": 1,
+			"name": "taste 1"
+		},
+		{
+			"id": 2,
+			"name": "taste 2"
+		},
+		{
+			"id": 3,
+			"name": "taste 3"
+		}
+	],
+	"fruitsAndBarries": [
+		{
+			"id": 1,
+			"name": "fruit"
+		},
+		{
+			"id": 2,
+			"name": "Barries"
+		},
+		{
+			"id": 3,
+			"name": "other fruit"
 		}
 	]
 }

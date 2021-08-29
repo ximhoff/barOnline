@@ -20,6 +20,10 @@ export default function Drinks() {
   const [fruitAndBarriesIsEnable, setFruitAndBarriesIsEnable] = useState(false)
   const [glassType, setGlassType] = useState('')
   const [drinkItems, setDrinkItems] = useState([])
+  const [glassTypes, setGlassTypes] = useState([])
+  const [bases, setBases] = useState([])
+  const [tastes, setTastes] = useState([])
+  const [fruitsAndBarries, setFruitsAndBarries] = useState([])
 
   const handleCheckbox = (e) => {
     let data = drinkItems
@@ -35,6 +39,26 @@ export default function Drinks() {
 
   const handleGlassType = (e) => {
     setGlassType(e.target.value)
+  }
+
+  const getGlassTypes = async () => {
+    const response = await fetch('http://localhost:8000/glassType')
+    setGlassTypes(await response.json());
+  }
+
+  const getBases = async () => {
+    const response = await fetch('http://localhost:8000/bases')
+    setBases(await response.json());
+  }
+
+  const getTastes = async () => {
+    const response = await fetch('http://localhost:8000/tastes')
+    setTastes(await response.json());
+  }
+
+  const getFruitsAndBarries = async () => {
+    const response = await fetch('http://localhost:8000/fruitsAndBarries')
+    setFruitsAndBarries(await response.json());
   }
 
   return (
