@@ -19,6 +19,19 @@ export default function Drinks() {
   const [tastesIsEnable, setTastesIsEnable] = useState(false)
   const [fruitAndBarriesIsEnable, setFruitAndBarriesIsEnable] = useState(false)
   const [glassType, setGlassType] = useState('')
+  const [drinkItems, setDrinkItems] = useState([])
+
+  const handleCheckbox = (e) => {
+    let data = drinkItems
+    const index = data.indexOf(e.target.value)
+    if (index > -1) {
+      data.splice(index, 1)
+    } else {
+      data.push(e.target.value)
+    }
+    setDrinkItems(data)
+    console.log(drinkItems);
+  }
 
   const handleGlassType = (e) => {
     setGlassType(e.target.value)
@@ -55,7 +68,7 @@ export default function Drinks() {
                 color='primary'
                 onChange={handleGlassType}
               />
-              <label>Copo 1</label>
+              <label>Copo 2</label>
             </div>
           </>
         }
@@ -68,63 +81,59 @@ export default function Drinks() {
           {!baseIsEnable ? <MdArrowForward /> : <MdArrowDownward />}
         </div>
         {baseIsEnable &&
-          <FormControlLabel
-            className="dropped"
-            control={
+          <>
+            <div
+              className="dropped">
+
               <Checkbox
-                defaultChecked={baseIsEnable}
-                onChange={(e) => console.log('parabens')}
-                name="checkedB"
+                onChange={(e) => handleCheckbox(e)}
                 color="primary"
+                value={'teste 1'}
               />
-            }
-            label="Primary"
-          />
+              Teste 1
+            </div>
+            <div
+              className="dropped">
+              <Checkbox
+                onChange={(e) => handleCheckbox(e)}
+                color="primary"
+                value={'teste 2'}
+              />
+              Teste 2
+            </div>
+          </>
         }
 
-        {baseIsEnable &&
-          <FormControlLabel
-            className="dropped"
-            control={
-              <Checkbox
-              defaultChecked={baseIsEnable}
-                onChange={(e) => console.log('parabens')}
-                name="checkedB"
-                color="primary"
-              />
-            }
-            label="Secondary"
-          />
-        }
-
-        <div>
-          <label
-            onClick={(e) => setTastesIsEnable(!tastesIsEnable)}
-            className="item">
+        <div
+          className="item"
+          onClick={(e) => setTastesIsEnable(!tastesIsEnable)}>
+          <label>
             Tastes
           </label>
-          {tastesIsEnable &&
-            <div className="dropped">asdfasdf</div>
-          }
+          {!tastesIsEnable ? <MdArrowForward /> : <MdArrowDownward />}
         </div>
-        <div>
-          <label
-            onClick={(e) => setFruitAndBarriesIsEnable(!fruitAndBarriesIsEnable)}
-            className="item">
+        {tastesIsEnable &&
+          <div className="dropped">asdfasdf</div>
+        }
+        <div
+          onClick={(e) => setFruitAndBarriesIsEnable(!fruitAndBarriesIsEnable)}
+          className="item">
+          <label>
             Fruit And Barries
           </label>
-          {fruitAndBarriesIsEnable &&
-            <div className="dropped">asdfasdf</div>
-          }
+          {!fruitAndBarriesIsEnable ? <MdArrowForward /> : <MdArrowDownward />}
         </div>
+        {fruitAndBarriesIsEnable &&
+          <div className="dropped">asdfasdf</div>
+        }
       </div>
       <div className='new-item'>
-          <Button
-            name="Novo Pedido"
-            onClick={() => alert('Faz nada')}
-            Icon={MdAdd}
-          />
-        </div>
+        <Button
+          name="Novo Pedido"
+          onClick={() => alert('Faz nada')}
+          Icon={MdAdd}
+        />
+      </div>
     </>
   )
 }

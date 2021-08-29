@@ -17,7 +17,7 @@
     text-transform: capitalize;
     color: #FFFFFF;
     border-bottom: 1px solid #E88643 ;
-    //margin: 20px ;
+    margin: 20px ;
   }
 
   .item{
@@ -46,11 +46,12 @@
 
   .new-item{
     display: flex;
-    width: 100%;
     justify-content: flex-end;
     align-items: center;
     flex-direction: column;
     text-align: center;
+    margin:20px auto;
+    width: 90%;
   }
 
 }
