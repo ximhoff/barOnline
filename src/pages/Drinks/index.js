@@ -43,7 +43,7 @@ export default function Drinks() {
               <Radio
                 value="Copo 1"
                 checked={glassType === "Copo 1"}
-                color='secondary'
+                color='primary'
                 onChange={handleGlassType}
               />
               <label>Copo 1</label>
@@ -72,7 +72,7 @@ export default function Drinks() {
             className="dropped"
             control={
               <Checkbox
-                checked={baseIsEnable}
+                defaultChecked={baseIsEnable}
                 onChange={(e) => console.log('parabens')}
                 name="checkedB"
                 color="primary"
@@ -80,8 +80,23 @@ export default function Drinks() {
             }
             label="Primary"
           />
-
         }
+
+        {baseIsEnable &&
+          <FormControlLabel
+            className="dropped"
+            control={
+              <Checkbox
+              defaultChecked={baseIsEnable}
+                onChange={(e) => console.log('parabens')}
+                name="checkedB"
+                color="primary"
+              />
+            }
+            label="Secondary"
+          />
+        }
+
         <div>
           <label
             onClick={(e) => setTastesIsEnable(!tastesIsEnable)}
@@ -102,14 +117,14 @@ export default function Drinks() {
             <div className="dropped">asdfasdf</div>
           }
         </div>
-        <div className='new-item'>
+      </div>
+      <div className='new-item'>
           <Button
             name="Novo Pedido"
             onClick={() => alert('Faz nada')}
             Icon={MdAdd}
           />
         </div>
-      </div>
     </>
   )
 }

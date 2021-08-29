@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header';
 import OrderItem from '../../components/OrderItem';
 import { MdAdd } from 'react-icons/md';
+import { MdAttachMoney  } from 'react-icons/md'
 import Button from '../../components/Button';
 import './index.scss';
 import ScrollView from '../../components/ScrollView';
@@ -20,7 +21,7 @@ export default function Bill() {
 
   return (
     <>
-      <Header title='Comandas' />
+      <Header title='Comanda' />
       <div className="container">
         <div className="bill-total">
           <div className="row">
@@ -30,8 +31,9 @@ export default function Bill() {
               </label>
             </div>
             <div className="col-r">
+            < MdAttachMoney />
               <label>
-                R$ 500,00
+                 500,00
               </label>
             </div>
           </div>
