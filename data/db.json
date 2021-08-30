@@ -143,6 +143,9 @@
         18,
         1,
         2,
+        4,
+        13,
+        4,
         4
       ],
       "status": "open",
@@ -217,10 +220,17 @@
       "hour": "02:30"
     },
     {
-      "id": 7
+      "id": 11,
+      "costumer": "02943047031",
+      "mesa": "1",
+      "items": [
+        1
+      ],
+      "status": "open",
+      "hour": "20:00"
     },
     {
-      "id": 8
+      "id": 12
     }
   ],
   "glassTypes": [
@@ -254,15 +264,15 @@
   "tastes": [
     {
       "id": 1,
-      "name": "taste 1"
+      "name": "Angostura"
     },
     {
       "id": 2,
-      "name": "taste 2"
+      "name": "Prosecco"
     },
     {
       "id": 3,
-      "name": "taste 3"
+      "name": "Cointreau"
     }
   ],
   "fruitsAndBarries": [
@@ -330,6 +340,26 @@
       "glassType": "Tulipa",
       "material": [
         "Vermouth"
+      ]
+    },
+    {
+      "id": 7,
+      "order": 1,
+      "glassType": "Flute",
+      "material": [
+        "Vermouth",
+        "Gim",
+        "Angostura",
+        "Morango"
+      ]
+    },
+    {
+      "id": 8,
+      "order": 1,
+      "glassType": "Tulipa",
+      "material": [
+        "Vodka",
+        "Cointreau"
       ]
     }
   ]
