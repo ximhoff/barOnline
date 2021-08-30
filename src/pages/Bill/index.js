@@ -11,23 +11,23 @@ import { Redirect } from 'react-router'
 import { url } from '../../constants'
 
 export default function Bill(props) {
+  console.log(props);
   const history = useHistory()
   const [order, setOrder] = useState([])
   const [items, setItems] = useState([])
   const [total, setTotal] = useState(0)
   const cpf = props.location.state ? props.location.state.order.costumer : sessionStorage.getItem("cpf")
- 
+  console.log(props);
   useEffect(() => {
     getOrder();
   }, [])
 
   const getOrder = async () => {
 
-    let response = await fetch(url + '/orders?costumer=' + cpf)
+    let response = await fetch(url + `/orders?costumer=${cpf}&&status=open`)
     let data = await response.json();
-    console.log(data)
-    console.log(cpf)
-    if(data.length == 0){
+    console.log(...data)
+    if (data.length == 0) {
       history.push("/login")
       return
     }
@@ -49,7 +49,7 @@ export default function Bill(props) {
 
   return (
     <>
-      <Header title='Comanda' goBackButton = {sessionStorage.getItem("waiter") ? true : false } route={{route:'/waiter'}} />
+      <Header title='Comanda' goBackButton={sessionStorage.getItem("waiter") ? true : false} route={{ route: '/waiter' }} />
       <div className='content-wrapper'>
         <div className="container">
           <div className="bill-total">
@@ -83,13 +83,13 @@ export default function Bill(props) {
           <div className='new-order-container'>
             <Button
               name="New Item"
-              onClick={() =>{ 
-                if(sessionStorage.getItem("waiter")){
-                  history.push('/waitermenu', { order:order })
-                }else{
+              onClick={() => {
+                if (sessionStorage.getItem("waiter")) {
+                  history.push('/waitermenu', { order: order })
+                } else {
                   history.push('/clientmenu', { order: order })
                 }
-                }}
+              }}
               Icon={MdAdd}
             />
           </div>

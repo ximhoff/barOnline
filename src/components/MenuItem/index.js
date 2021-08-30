@@ -13,8 +13,11 @@ const MenuItem = ({ title, description, price, moneyButton, infoButton, order, i
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(order)
         })
-        history.push("/bill", {order:order})
-        
+        history.push("/bill", { order: order })
+    }
+
+    const goToDrinks = () => {
+        history.push("/drinks", { order: order })
     }
 
     return (
@@ -28,7 +31,12 @@ const MenuItem = ({ title, description, price, moneyButton, infoButton, order, i
                 {moneyButton && <MdAttachMoney className='price-icon' />}
                 <div className='price-value'>{price}</div>
             </div>
-            {infoButton && <MdAdd className='info-button' onClick={() => addItem()} />}
+            {infoButton &&
+                <MdAdd
+                    className='info-button'
+                    onClick={() => itemId !== 4 ? addItem() : goToDrinks()}
+                />
+            }
         </div>
     )
 }
