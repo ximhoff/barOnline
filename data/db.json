@@ -4,113 +4,235 @@
       "id": 1,
       "name": "Fritas",
       "description": "Batatas, fritas em banha de porco",
-      "value": 10,
-      "category": "petisco"
+      "value": 20,
+      "category": "Pestisco"
     },
     {
       "id": 2,
-      "name": "Iscas de filé",
-      "description": "Batatas, fritas em banha de porco",
-      "value": 20,
-      "category": "categoria 2"
+      "name": "Iscas De filé",
+      "description": "Filé, Oregano, Sal e Pimenta",
+      "value": 48,
+      "category": "Pestisco"
     },
     {
       "id": 3,
-      "name": "Asdf",
-      "description": "As, df",
+      "name": "Bolinho De Mandioca",
+      "description": "Mandioca, Calabresa, Frito em Óleo",
+      "value": 20,
+      "category": "Pestisco"
+    },
+    {
+      "id": 5,
+      "name": "Linguiça Portenha",
+      "description": "Linguiça portenha, Assada",
       "value": 30,
-      "category": "categoria 3"
+      "category": "Pestisco"
+    },
+    {
+      "id": 6,
+      "name": "Espetinho De Frango",
+      "description": "3 Espetinhos Assados de Frango",
+      "value": 25,
+      "category": "Pestisco"
+    },
+    {
+      "id": 7,
+      "name": "Dry Martini",
+      "description": "Dry Vermouth, Gin, Azeitona",
+      "value": 20,
+      "category": "Drink"
+    },
+    {
+      "id": 8,
+      "name": "Old Frashioned",
+      "description": "Bourbon, Bitter, Açucas, Laranja",
+      "value": 23,
+      "category": "Drink"
+    },
+    {
+      "id": 9,
+      "name": "Negroni",
+      "description": "Gin, Campari, Sweet Vermoth",
+      "value": 30,
+      "category": "Drink"
+    },
+    {
+      "id": 10,
+      "name": "Tabua De Carnes",
+      "description": "Iscas de filé, Iscas de frango, Linguiça mista, Coração, Queijo em cubos, Polenta frita",
+      "value": 100,
+      "category": "Tabuas"
+    },
+    {
+      "id": 11,
+      "name": "Tabua De Frios",
+      "description": "Salame, Copa, Presunto, Queijo, Pepino, Azeitona",
+      "value": 40,
+      "category": "Tabuas"
+    },
+    {
+      "id": 12,
+      "name": "Tabua De Frutos Do Mar",
+      "description": "Camarão, Bolinho de Peixe, Iscas de Peixe, Casquinha de Siri, Lula a milanesa, Marisco",
+      "value": 120,
+      "category": "Tabuas"
+    },
+    {
+      "id": 13,
+      "name": "Caturripa",
+      "description": "India Pale Ale",
+      "value": 20,
+      "category": "Cervejas"
+    },
+    {
+      "id": 14,
+      "name": "SUD Stout",
+      "description": "Stout",
+      "value": 20,
+      "category": "Cervejas"
+    },
+    {
+      "id": 15,
+      "name": "Al Capone Witbier",
+      "description": "Witbier",
+      "value": 15,
+      "category": "Cervejas"
+    },
+    {
+      "id": 16,
+      "name": "Heillige Barley Wine",
+      "description": "Barley Wine",
+      "value": 19,
+      "category": "Cervejas"
+    },
+    {
+      "id": 17,
+      "name": "Heillige Tripel",
+      "description": "Belgian Tripel",
+      "value": 29,
+      "category": "Cervejas"
+    },
+    {
+      "id": 18,
+      "name": "Delirium Tremens",
+      "description": "Belgian Golden Strong Ale",
+      "value": 36,
+      "category": "Cervejas"
+    },
+    {
+      "id": 19,
+      "name": "Pilsner Urquell",
+      "description": "Pilsner",
+      "value": 36,
+      "category": "Cervejas"
     }
   ],
   "orders": [
     {
       "id": 1,
-      "costumer": "03980737080",
+      "costumer": "000000000111",
       "table": 1,
       "items": [
+        18,
         1,
-        2,
-        2,
-        1
+        2
       ],
       "status": "open",
-      "hour": "20:00"
+      "hour": "20:33"
     },
     {
       "id": 2,
-      "costumer": "04980737080",
+      "costumer": "000000000222",
       "table": 2,
       "items": [
-        1,
-        3,
-        3
+        17,
+        10,
+        5
       ],
       "status": "open",
-      "hour": "20:00"
+      "hour": "20:18"
     },
     {
       "id": 3,
-      "costumer": "04980737080",
-      "table": 2,
+      "costumer": "000000000333",
+      "table": 3,
       "items": [
-        1,
-        3
+        11,
+        15,
+        7
       ],
       "status": "open",
-      "hour": "20:00"
+      "hour": "19:43"
     },
     {
       "id": 4,
-      "costumer": "04980737080",
-      "table": 2,
+      "costumer": "000000000444",
+      "table": 4,
       "items": [
-        1,
-        3
+        10,
+        15,
+        8
       ],
       "status": "open",
-      "hour": "20:00"
+      "hour": "21:09"
     },
     {
       "id": 5,
-      "costumer": "04980737080",
-      "table": 2,
+      "costumer": "000000000555",
+      "table": 5,
       "items": [
+        19,
+        18,
+        17,
+        15,
         1,
-        3
+        2
       ],
       "status": "open",
-      "hour": "20:00"
+      "hour": "02:30"
     },
     {
-      "id": 6
+      "id": 6,
+      "costumer": "000000000666",
+      "table": 6,
+      "items": [
+        18,
+        17,
+        15,
+        14,
+        1,
+        5
+      ],
+      "status": "open",
+      "hour": "02:30"
     }
   ],
   "glassTypes": [
     {
       "id": 1,
-      "name": "copo 1"
+      "name": "Tulipa"
     },
     {
       "id": 2,
-      "name": "copo 2"
+      "name": "Tumbler"
     },
     {
       "id": 3,
-      "name": "copo 3"
+      "name": "Flute"
     }
   ],
   "bases": [
     {
       "id": 1,
-      "name": "base 1"
+      "name": "Vermouth"
     },
     {
       "id": 2,
-      "name": "base 2"
+      "name": "Gim"
     },
     {
       "id": 3,
-      "name": "base 3"
+      "name": "Vodka"
     }
   ],
   "tastes": [
@@ -130,15 +252,44 @@
   "fruitsAndBarries": [
     {
       "id": 1,
-      "name": "fruit"
+      "name": "Morango"
     },
     {
       "id": 2,
-      "name": "Barries"
+      "name": "Limão"
     },
     {
       "id": 3,
-      "name": "other fruit"
+      "name": "Cereja"
+    }
+  ],
+  "drinks": [
+    {
+      "id": 1,
+      "order": 2,
+      "glassType": "Tulipa",
+      "material": [
+        "Martini",
+        "Cereja"
+      ]
+    },
+    {
+      "id": 2,
+      "order": 4,
+      "glassType": "Flute",
+      "material": [
+        "Gim",
+        "Limão"
+      ]
+    },
+    {
+      "id": 3,
+      "order": 1,
+      "glassType": "Tulipa",
+      "material": [
+        "Vodka",
+        "Morango"
+      ]
     }
   ]
 }
