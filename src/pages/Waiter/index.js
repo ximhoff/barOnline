@@ -15,7 +15,7 @@ export default function Waiter() {
   const [filteredOrders, setFilteredOrders] = useState([])
   const [items, setItems] = useState([])
   const [totals, setTotals] = useState([])
-  const [newCpf, setNewCpf] = useState([])
+  const [newCpf, setNewCpf] = useState('')
 
   useEffect(() => {
     getOrders();
@@ -53,7 +53,13 @@ export default function Waiter() {
   }
 
   const createNewOrder = (str) => {
-    orders.push({ id:1, costumer:"str", table:"1", itens:[], status:"open",hour:"20:00"})
+    fetch(url + '/orders/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id:0, costumer:str, mesa:"1", items:[], status:"open",hour:"20:00"})
+    })
+    alert("Comanda criada com sucesso")
+    window.location.reload();
   }
 
   if (!sessionStorage.getItem('waiter')) {
@@ -78,7 +84,7 @@ export default function Waiter() {
             return <OrderCard
               orderInfo={{
                 cpf: order.costumer,
-                table: order.table,
+                ID: order.id,
                 total: totals[index],
                 status: order.status
               }} onClick={(e) => history.push('/bill', { order: order })}
@@ -95,7 +101,7 @@ export default function Waiter() {
             </div>
             <Button
               name="Adicionar Comanda"
-              onClick={() => history.push('/bill')}
+              onClick={() => createNewOrder(newCpf)}
               Icon={MdAdd}
             />
           </div>
