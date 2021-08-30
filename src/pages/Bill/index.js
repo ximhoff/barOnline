@@ -16,26 +16,27 @@ export default function Bill(props) {
   const [items, setItems] = useState([])
   const [total, setTotal] = useState(0)
   const cpf = props.location.state ? props.location.state.order.costumer : sessionStorage.getItem("cpf")
-
+ 
   useEffect(() => {
     getOrder();
   }, [])
 
   const getOrder = async () => {
-    const response = await fetch(url + '/orders')
-    let data = await response.json()
+
+    let response = await fetch(url + '/orders?costumer=' + cpf)
+    let data = await response.json();
     console.log(data)
-    const filtered = data.filter(order => order.costumer == cpf)[0]
-    if (!filtered) {
-      history.push('/login')
+    console.log(cpf)
+    if(data.length == 0){
+      history.push("/login")
       return
     }
-
-    setOrder(filtered)
+    data = data[0]
+    setOrder(data)
     let aux = []
     let sum = 0
-    for (let i = 0; i < filtered.items.length; i++) {
-      const response = await fetch(`${url}/items/${filtered.items[i]}`)
+    for (let i = 0; i < data.items.length; i++) {
+      const response = await fetch(`${url}/items/${data.items[i]}`)
       aux.push(await response.json())
       sum += aux[i].value
     }
@@ -48,7 +49,7 @@ export default function Bill(props) {
 
   return (
     <>
-      <Header title='Comanda' goBackButton route={{route:'/waiter'}} />
+      <Header title='Comanda' goBackButton = {sessionStorage.getItem("waiter") ? true : false } route={{route:'/waiter'}} />
       <div className='content-wrapper'>
         <div className="container">
           <div className="bill-total">
@@ -84,9 +85,9 @@ export default function Bill(props) {
               name="New Item"
               onClick={() =>{ 
                 if(sessionStorage.getItem("waiter")){
-                  history.push('/waitermenu', { order: props.location.state.order })
+                  history.push('/waitermenu', { order:order })
                 }else{
-                  history.push('/clientmenu', { order: props.location.state.order })
+                  history.push('/clientmenu', { order: order })
                 }
                 }}
               Icon={MdAdd}

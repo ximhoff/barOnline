@@ -56,7 +56,7 @@ export default function WaiterMenu(props) {
     return (
 
         <div className='scroll-container variable-height '>
-            <Header title='Pedido' goBackButton route={{route:'/waiter', state:props.location.state}}/>
+            <Header title='Pedido' goBackButton route={{route:'/bill', state:props.location.state}}/>
             <div className='content-wrapper scroll-container variable-height' ref={ref} onMouseDown={onMouseDown}>
                 <div className="item-search-menu">
                     <Input

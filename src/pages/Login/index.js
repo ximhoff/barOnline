@@ -32,6 +32,8 @@ export default function Login() {
             }
          
             else if(cpf == '00000000011'){
+                sessionStorage.setItem('login', true);
+                sessionStorage.setItem('cpf', cpf);
                 sessionStorage.setItem('waiter', true)
                 history.push('/waiter')
                 return
