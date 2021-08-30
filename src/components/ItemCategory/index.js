@@ -14,7 +14,7 @@ const ItemCategory = (props) => {
             <li className='item-list'>
                 {items.map((option, index) => {
                     return < MenuItem
-                        title={option.title}
+                        title={option.name}
                         description={option.description}
                         price={option.value}
                         infoButton={Button}
