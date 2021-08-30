@@ -6,13 +6,14 @@ import HeaderNotes from '../../components/HeaderNotes';
 import useDraggableScroll from 'use-draggable-scroll';
 import {useRef} from 'react'
 import {Redirect} from 'react-router'
+import {url} from '../../constants'
 
 export default function ClientMenu() {
 
     const [items, setItems] = useState([])
 
     const getItems = async () => {
-        const response = await fetch('http://localhost:8000/items')
+        const response = await fetch(url + '/items')
         setItems(await response.json());
     }
 

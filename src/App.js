@@ -10,11 +10,13 @@ import WaiterMenu from './pages/WaiterMenu';
 import Bill from './pages/Bill';
 import Drinks from './pages/Drinks';
 
+
 function App() {
 
   return (
     <Router>
       <>
+        <Route path="/" exact component={Login} />
         <Route path="/login" exact component={Login} />
         <Route path="/waiter" exact component={Waiter} />
         <Route path="/clientmenu" exact component={ClientMenu}/>

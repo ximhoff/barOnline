@@ -7,6 +7,7 @@ import Button from '../../components/Button';
 import './index.scss';
 import ScrollView from '../../components/ScrollView';
 import { Redirect } from 'react-router';
+import {url} from '../../constants'
 
 export default function Waiter() {
 
@@ -16,25 +17,18 @@ export default function Waiter() {
 
   useEffect(() => {
     getOrders();
-    getItems();
-    calcTotals();
-  }, [items])
+  }, [])
 
 
   const getOrders = async () => {
-    const response = await fetch('http://localhost:8000/orders')
-    const data = await response.json();
+    let response = await fetch(url + '/orders')
+    let data = await response.json();
     const aux = data.filter(order => order.status === 'open')
     setOrders(aux);
-  }
-
-  const getItems = async () => {
-    const response = await fetch('http://localhost:8000/items')
+    response = await fetch(url +'/items')
     setItems(await response.json());
-  }
 
-  const calcTotals = () => {
-    let data = [];
+    data = [];
     orders.forEach(order => {
       let aux = 0;
       order.items.forEach(i => {
@@ -45,6 +39,7 @@ export default function Waiter() {
     })
     setTotals(data);
   }
+
 
 
   if (!sessionStorage.getItem('waiter')){
