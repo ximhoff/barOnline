@@ -48,7 +48,7 @@ export default function Bill(props) {
 
   return (
     <>
-      <Header title='Comanda' goBackButton />
+      <Header title='Comanda' goBackButton route={{route:'/waiter'}} />
       <div className='content-wrapper'>
         <div className="container">
           <div className="bill-total">
@@ -82,7 +82,13 @@ export default function Bill(props) {
           <div className='new-order-container'>
             <Button
               name="New Item"
-              onClick={() => history.push('/clientmenu', { order: props.location.state.order })}
+              onClick={() =>{ 
+                if(sessionStorage.getItem("waiter")){
+                  history.push('/waitermenu', { order: props.location.state.order })
+                }else{
+                  history.push('/clientmenu', { order: props.location.state.order })
+                }
+                }}
               Icon={MdAdd}
             />
           </div>

@@ -1,12 +1,11 @@
 import './index.scss'
 import {MdArrowBack} from 'react-icons/md'
 import {useHistory} from 'react-router-dom'
-const Header = ({title, goBackButton}) =>{
+const Header = ({title, goBackButton, route}) =>{
 
     const history = useHistory()
     const returnToPreviousPage = ()=>{
-        history.goBack()
-        console.log(history)
+        history.push(route.route, route.state)
     }
 
     return (

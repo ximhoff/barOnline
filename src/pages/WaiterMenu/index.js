@@ -9,7 +9,8 @@ import useDraggableScroll from 'use-draggable-scroll';
 import { useRef ,useEffect} from 'react'
 import { Redirect } from 'react-router';
 import {url} from '../../constants'
-export default function WaiterMenu({order}) {
+
+export default function WaiterMenu(props) {
 
     const [items, setItems] = useState([])
     const [filteredItems, setFilteredItems] = useState([])
@@ -55,7 +56,7 @@ export default function WaiterMenu({order}) {
     return (
 
         <div className='scroll-container variable-height '>
-            <Header title='Pedido' />
+            <Header title='Pedido' goBackButton route={{route:'/waiter', state:props.location.state}}/>
             <div className='content-wrapper scroll-container variable-height' ref={ref} onMouseDown={onMouseDown}>
                 <div className="item-search-menu">
                     <Input
@@ -69,7 +70,7 @@ export default function WaiterMenu({order}) {
                     {filteredItems.map((item, index) => {
                         return <MenuItem title={item.name} price={item.value}
                             infoButton={Button}
-                            moneyButton={Button} key={index}
+                            moneyButton={Button} key={index} order={props.location.state.order} itemId={item.id}
                         />
                     })}
                 </div>

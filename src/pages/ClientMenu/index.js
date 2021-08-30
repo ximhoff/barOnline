@@ -47,7 +47,7 @@ export default function ClientMenu(props) {
 
     return (
         <div className='scroll-container variable-height '>
-            <Header title='Cardápio' goBackButton />
+            <Header title='Cardápio' goBackButton route={{route:'/bill',state:props.location.state}}/>
             <div ref={ref} onMouseDown={onMouseDown} className='content-wrapper variable-height scroll-container '>
                 <div className='menu-tooltip'>
                     <HeaderNotes title='Martini' description='Popularizado pelos filmes de James Bond, 007, na década de 1970' />

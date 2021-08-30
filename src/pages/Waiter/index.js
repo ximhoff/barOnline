@@ -33,7 +33,7 @@ export default function Waiter() {
     setItems(items);
 
     let totalPrice = [];
-    orders.forEach(order => {
+    aux.forEach(order => {
       let aux = 0;
       order.items.forEach(i => {
         const item = items.filter(item => item.id === i)[0];
@@ -45,8 +45,11 @@ export default function Waiter() {
   }
 
   const filterItems = (str) => {
-    const data = orders.filter(item => item.table == str);
-    setFilteredOrders(data);
+    if(str =='') setFilteredOrders(orders);
+    else{
+      const data = orders.filter(item => item.table == str);
+      setFilteredOrders(data);
+    }
   }
 
   const createNewOrder = (str) => {
@@ -68,7 +71,7 @@ export default function Waiter() {
             <Input
               placeholder='Número da comanda'
               handleValue={(e) => filterItems(e.target.value)}
-              Icon={MdSearch}
+              Icon={MdSearch} inputType='number'
             />
           </div>
           <ScrollView Content={filteredOrders.map((order, index) => {
@@ -87,7 +90,7 @@ export default function Waiter() {
             <div className="new-order">
               <Input className="center-text"
                 placeholder="Insira o CPF para criar uma nova comanda"
-                handleValue={(e) => setNewCpf(e.target.value)}
+                handleValue={(e) => setNewCpf(e.target.value)} inputType='number'
               />
             </div>
             <Button

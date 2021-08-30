@@ -2,8 +2,10 @@ import './index.scss'
 import { MdAdd } from 'react-icons/md'
 import { MdAttachMoney } from 'react-icons/md'
 import { url } from '../../constants'
+import { useHistory } from 'react-router'
 
 const MenuItem = ({ title, description, price, moneyButton, infoButton, order, itemId }) => {
+    const history = useHistory()
     const addItem = () => {
         order.items.push(itemId)
         fetch(url + `/orders/${order.id}`, {
@@ -11,6 +13,8 @@ const MenuItem = ({ title, description, price, moneyButton, infoButton, order, i
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(order)
         })
+        history.push("/bill", {order:order})
+        
     }
 
     return (

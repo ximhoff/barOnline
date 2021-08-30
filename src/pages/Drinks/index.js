@@ -82,7 +82,7 @@ export default function Drinks() {
 
   return (
     <>
-      <Header title='Montar Drink' goBackButton={true} />
+      <Header title='Montar Drink' goBackButton route={{route:'/bill'}} />
       <div className='content-wrapper'>
         <div className="drinks">
           <div className="title">Drink(numero)</div>
