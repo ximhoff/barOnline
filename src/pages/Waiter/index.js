@@ -6,11 +6,11 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import './index.scss';
 import ScrollView from '../../components/ScrollView';
-import { Redirect } from 'react-router';
+import { Redirect, useHistory } from 'react-router';
 import {url} from '../../constants'
 
 export default function Waiter() {
-
+  const history =useHistory()
   const [orders, setOrders] = useState([])
   const [items, setItems] = useState([])
   const [totals, setTotals] = useState([])
@@ -68,7 +68,7 @@ export default function Waiter() {
                 table: order.table,
                 total: totals[index],
                 status: order.status
-              }} onClick={(e) => console.log(e)}
+              }} onClick={(e) => history.push('/bill', {cpf:order.costumer}) }
               key={index}
             />
           })} />
@@ -83,7 +83,7 @@ export default function Waiter() {
             </div>
             <Button
               name="Adicionar Comanda"
-              onClick={() => alert('Faz nada')}
+              onClick={() => alert("faz nada")}
               Icon={MdAdd}
             />
           </div>
