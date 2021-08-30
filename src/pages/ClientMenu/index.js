@@ -21,7 +21,8 @@ export default function ClientMenu(props) {
 
         let cat = []
         data.forEach((item) => {
-            let idx = cat.indexOf(item)
+            let idx = cat.findIndex(cat => cat.name == item.category)
+            console.log(idx)
             if (idx === -1) {
                 cat.push({
                     name: item.category,
@@ -54,6 +55,7 @@ export default function ClientMenu(props) {
                 </div>
                 <div className='menu-list'>
                     {itemsCategories.map((category, index) => {
+                        console.log(category)
                         return <ItemCategory
                             title={category.name}
                             items={category.items}
