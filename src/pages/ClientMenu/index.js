@@ -7,38 +7,37 @@ import useDraggableScroll from 'use-draggable-scroll';
 import {useRef} from 'react'
 import {Redirect} from 'react-router'
 import {url} from '../../constants'
-
 export default function ClientMenu() {
 
     const [items, setItems] = useState([])
+    const [itemsCategories, setItemsCategories] = useState([])
+
+    useEffect(() => {
+        getItems()
+    }, [])
 
     const getItems = async () => {
         const response = await fetch(url + '/items')
-        setItems(await response.json());
+        let data =  await response.json()
+        setItems(data);
+
+        let cat = []
+        data.forEach((item) => {
+            let idx = cat.indexOf(item)
+            if(idx == -1){
+                cat.push({
+                    name:item.category,
+                    items: [item]
+                })
+            }else{
+                cat[idx].items.push(item)
+            }
+        })
+
+        setItemsCategories(cat)
     }
 
-    var itensCategories = [5];
-    itensCategories[0] = {};
-    itensCategories[0].name = 'Drinks';
-
-    itensCategories[1] = {};
-    itensCategories[1].name = 'Petiscos';
-
-    itensCategories[2] = {};
-    itensCategories[2].name = 'Cervejas';
-
-    itensCategories[3] = {};
-    itensCategories[3].name = 'Vinhos';
-
-    itensCategories[4] = {};
-    itensCategories[4].name = 'Sobremesas';
-
-    //produtcs.push({ name: 'dummy', description:'dummydummydummydummy', price:'100'})
-    //produtcs.push({ name: 'dummy', description:'dummydummy', price:'10'})
-    //produtcs.push({ name: 'dummy', description:'dummydummydummy', price:'50'})
-    //array.push({ name: '', description:'', price:''})
-
-
+   
     const ref = useRef(null);
 
     const { onMouseDown } = useDraggableScroll(ref, { direction: 'vertical' });
@@ -56,8 +55,8 @@ export default function ClientMenu() {
                     <HeaderNotes title='Martini' description='Popularizado pelos filmes de James Bond, 007, na década de 1970' />
                 </div>
                 <div className='menu-list'>
-                    {itensCategories.map((itens, index) => {
-                        return < ItemCategory title={itens.name} key={index} />
+                    {itemsCategories.map((category, index) => {
+                        return < ItemCategory title={category.name} items={category.items} key={index} />
                     })}
                 </div>
             </div>

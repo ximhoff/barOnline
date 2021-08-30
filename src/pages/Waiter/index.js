@@ -22,22 +22,23 @@ export default function Waiter() {
 
   const getOrders = async () => {
     let response = await fetch(url + '/orders')
-    let data = await response.json();
-    const aux = data.filter(order => order.status === 'open')
+    let orders = await response.json();
+    const aux = orders.filter(order => order.status === 'open')
     setOrders(aux);
     response = await fetch(url +'/items')
-    setItems(await response.json());
+    let items = await response.json()
+    setItems(items);
 
-    data = [];
+    let totalPrice = [];
     orders.forEach(order => {
       let aux = 0;
       order.items.forEach(i => {
         const item = items.filter(item => item.id === i)[0];
         aux += item.value;
       })
-      data.push(aux);
+      totalPrice.push(aux);
     })
-    setTotals(data);
+    setTotals(totalPrice);
   }
 
 
