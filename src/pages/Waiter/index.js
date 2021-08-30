@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header';
 import OrderCard from '../../components/OrderCard';
 import { MdSearch, MdAdd } from 'react-icons/md';
-import TextInput from '../../components/TextInput';
+import Input from '../../components/Input';
 import Button from '../../components/Button';
 import './index.scss';
 import ScrollView from '../../components/ScrollView';
@@ -55,10 +55,10 @@ export default function Waiter() {
       <div className='content-wrapper'>
         <div className="container">
           <div className="command-search-menu">
-            <TextInput
+            <Input
               placeholder='Número da comanda'
               handleValue={(e) => console.log(e)}
-              Icon={MdSearch}
+              Icon={MdSearch} inputType='number'
             />
           </div>
           <ScrollView Content={orders.map((order, index) => {
@@ -75,9 +75,10 @@ export default function Waiter() {
           <div className='new-order-container'>
             <label className="label">CPF</label>
             <div className="new-order">
-              <TextInput className="center-text"
+              <Input className="center-text"
                 placeholder="Insira o CPF para criar uma nova comanda"
                 handleValue={(e) => console.log(e)}
+                inputType='number'
               />
             </div>
             <Button

@@ -3,7 +3,7 @@ import Header from '../../components/Header';
 import Button from '../../components/Button';
 import './index.scss';
 import { MdSearch } from 'react-icons/md';
-import TextInput from '../../components/TextInput';
+import Input from '../../components/Input';
 import MenuItem from '../../components/MenuItem';
 import useDraggableScroll from 'use-draggable-scroll';
 import { useRef } from 'react'
@@ -97,10 +97,10 @@ export default function WaiterMenu() {
             <Header title='Cardápio' />
             <div className='content-wrapper scroll-container variable-height' ref={ref} onMouseDown={onMouseDown}>
                 <div className="item-search-menu">
-                    <TextInput
+                    <Input
                         placeholder='Nome do Item'
                         handleValue={(e) => console.log(e)}
-                        Icon={MdSearch}
+                        Icon={MdSearch} inputType='number'
                     />
                 </div>
 
