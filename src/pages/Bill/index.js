@@ -7,6 +7,8 @@ import Button from '../../components/Button';
 import './index.scss';
 import ScrollView from '../../components/ScrollView';
 import { useHistory } from 'react-router-dom';
+import {Redirect} from 'react-router'
+import {url} from '../../constants'
 
 export default function Bill() {
   const history = useHistory()
@@ -19,19 +21,22 @@ export default function Bill() {
   }, [])
 
   const getOrder = async () => {
-    const response = await fetch('http://localhost:8000/orders')
+    const response = await fetch(url + '/orders')
     let data = await response.json()
     const filtered = data.filter(order => order.costumer === localStorage.getItem('cpf'))[0]
     setOrder(filtered)
     let aux = []
     let sum = 0
     for (let i = 0; i < filtered.items.length; i++) {
-      const response = await fetch(`http://localhost:8000/items/${filtered.items[i]}`)
+      const response = await fetch(url+`/items/${filtered.items[i]}`)
       aux.push(await response.json())
       sum += aux[i].value
     }
     setItems(aux);
     setTotal(sum)
+  }
+  if (!sessionStorage.getItem('login')){
+    return <Redirect exact to="/login" />;
   }
 
   return (

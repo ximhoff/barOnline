@@ -6,42 +6,52 @@ import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import './index.scss';
 import ScrollView from '../../components/ScrollView';
+import { Redirect } from 'react-router';
+import { url } from '../../constants'
+import { useHistory } from 'react-router-dom';
 
 export default function Waiter() {
+  const history = useHistory()
+
   const [orders, setOrders] = useState([])
   const [items, setItems] = useState([])
   const [totals, setTotals] = useState([])
 
   useEffect(() => {
     getOrders();
-    getItems();
-    calcTotals();
-  }, [items])
+  }, [])
+
 
   const getOrders = async () => {
-    const response = await fetch('http://localhost:8000/orders')
-    const data = await response.json();
+    let response = await fetch(url + '/orders')
+    let data = await response.json();
     const aux = data.filter(order => order.status === 'open')
     setOrders(aux);
-  }
+    response = await fetch(url + '/items')
+    let items = await response.json()
+    setItems(items);
 
-  const getItems = async () => {
-    const response = await fetch('http://localhost:8000/items')
-    setItems(await response.json());
-  }
-
-  const calcTotals = () => {
-    let data = [];
+    let totalPrice = [];
     orders.forEach(order => {
       let aux = 0;
       order.items.forEach(i => {
         const item = items.filter(item => item.id === i)[0];
         aux += item.value;
       })
-      data.push(aux);
+      totalPrice.push(aux);
     })
-    setTotals(data);
+    setTotals(totalPrice);
   }
+
+  const redirect = (id) => {
+    history.push('/waitermenu', { order: id })
+  }
+
+  if (!sessionStorage.getItem('waiter')) {
+    return <Redirect exact to="/login" />;
+  }
+
+
 
   return (
     <>
@@ -62,7 +72,8 @@ export default function Waiter() {
                 table: order.table,
                 total: totals[index],
                 status: order.status
-              }} onClick={(e) => console.log(e)}
+              }}
+              onClick={(e) => redirect(order.id)}
               key={index}
             />
           })} />
@@ -76,7 +87,7 @@ export default function Waiter() {
             </div>
             <Button
               name="Adicionar Comanda"
-              onClick={() => alert('Faz nada')}
+              onClick={(e) => alert('Faz nada')}
               Icon={MdAdd}
             />
           </div>

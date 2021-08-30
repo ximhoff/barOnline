@@ -12,6 +12,11 @@ import {
   MdAdd
 } from 'react-icons/md'
 import './index.scss'
+import {Redirect} from 'react-router'
+import {url} from '../../constants'
+
+
+
 
 export default function Drinks() {
   const [glassTypeIsEnable, setGlassTypeIsEnable] = useState(false)
@@ -42,23 +47,28 @@ export default function Drinks() {
   }
 
   const getGlassTypes = async () => {
-    const response = await fetch('http://localhost:8000/glassType')
+    const response = await fetch(url +'/glassType')
     setGlassTypes(await response.json());
   }
 
   const getBases = async () => {
-    const response = await fetch('http://localhost:8000/bases')
+    const response = await fetch(url + '/bases')
     setBases(await response.json());
   }
 
   const getTastes = async () => {
-    const response = await fetch('http://localhost:8000/tastes')
+    const response = await fetch(url + '/tastes')
     setTastes(await response.json());
   }
 
   const getFruitsAndBarries = async () => {
-    const response = await fetch('http://localhost:8000/fruitsAndBarries')
+    const response = await fetch(url + '/fruitsAndBarries')
     setFruitsAndBarries(await response.json());
+
+  }
+  
+  if (!sessionStorage.getItem('login')){
+    return <Redirect exact to="/login" />;
   }
 
   return (
