@@ -10,11 +10,12 @@ import { useHistory } from 'react-router-dom';
 import {Redirect} from 'react-router'
 import {url} from '../../constants'
 
-export default function Bill() {
+export default function Bill(props) {
   const history = useHistory()
   const [order, setOrder] = useState([])
   const [items, setItems] = useState([])
   const [total, setTotal] = useState(0)
+  const cpf = props.location.state ? props.location.state.cpf : sessionStorage.getItem("cpf")
 
   useEffect(() => {
     getOrder();
@@ -23,16 +24,18 @@ export default function Bill() {
   const getOrder = async () => {
     const response = await fetch(url + '/orders')
     let data = await response.json()
-    const filtered = data.filter(order => order.costumer === sessionStorage.getItem('cpf'))[0]
+    console.log(data)
+    const filtered = data.filter(order => order.costumer == cpf)[0]
     if(!filtered){
       history.push('/login')
       return
     }
+
     setOrder(filtered)
     let aux = []
     let sum = 0
     for (let i = 0; i < filtered.items.length; i++) {
-      const response = await fetch(`{url}/items/${filtered.items[i]}`)
+      const response = await fetch(`${url}/items/${filtered.items[i]}`)
       aux.push(await response.json())
       sum += aux[i].value
     }
@@ -45,7 +48,7 @@ export default function Bill() {
 
   return (
     <>
-      <Header title='Comanda' />
+      <Header title='Comanda' goBackButton />
       <div className='content-wrapper'>
         <div className="container">
           <div className="bill-total">

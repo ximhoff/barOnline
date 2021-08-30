@@ -2,21 +2,18 @@ import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header';
 import OrderCard from '../../components/OrderCard';
 import { MdSearch, MdAdd } from 'react-icons/md';
-import TextInput from '../../components/TextInput';
+import Input from '../../components/Input';
 import Button from '../../components/Button';
 import './index.scss';
 import ScrollView from '../../components/ScrollView';
-import { Redirect } from 'react-router';
+import { Redirect, useHistory } from 'react-router';
 import {url} from '../../constants'
-import {useHistory} from 'react-router-dom'
 
 export default function Waiter() {
-
+  const history =useHistory()
   const [orders, setOrders] = useState([])
-  const [filteredOrders, setFilteredOrders] = useState([])
   const [items, setItems] = useState([])
   const [totals, setTotals] = useState([])
-  const [newCpf, setNewCpf] = useState([])
 
   useEffect(() => {
     getOrders();
@@ -28,7 +25,6 @@ export default function Waiter() {
     let orders = await response.json();
     const aux = orders.filter(order => order.status === 'open')
     setOrders(aux);
-    setFilteredOrders(aux);
     response = await fetch(url +'/items')
     let items = await response.json()
     setItems(items);
@@ -45,19 +41,7 @@ export default function Waiter() {
     setTotals(totalPrice);
   }
 
-  const filterItems = (str) => {
-    const data = orders.filter(item => item.table == str);
-    setFilteredOrders(data);
-  }
 
-  const createNewOrder = (str) => {
-    orders.push({ id:1, costumer:"str", table:"1", itens:[], status:"open",hour:"20:00"})
-  }
-
-  const history = useHistory()
-
-  const goToOrder = (str) => {
-  }
 
   if (!sessionStorage.getItem('waiter')){
     return <Redirect exact to="/login" />;
@@ -71,36 +55,35 @@ export default function Waiter() {
       <div className='content-wrapper'>
         <div className="container">
           <div className="command-search-menu">
-            <TextInput
+            <Input
               placeholder='Número da comanda'
-              handleValue={(e) => filterItems(e.target.value)}
-              Icon={MdSearch}
+              handleValue={(e) => console.log(e)}
+              Icon={MdSearch} inputType='number'
             />
           </div>
-          <ScrollView Content={filteredOrders.map((order, index) => {
+          <ScrollView Content={orders.map((order, index) => {
             return <OrderCard
               orderInfo={{
                 cpf: order.costumer,
                 table: order.table,
                 total: totals[index],
                 status: order.status
-              }} onClick={() => history.push({
-                pathname: '/bill',
-                state: { detail: order.costumer }})} //console.log(e)
+              }} onClick={(e) => history.push('/bill', {cpf:order.costumer}) }
               key={index}
             />
           })} />
           <div className='new-order-container'>
             <label className="label">CPF</label>
             <div className="new-order">
-              <TextInput className="center-text"
+              <Input className="center-text"
                 placeholder="Insira o CPF para criar uma nova comanda"
-                handleValue={(e) => setNewCpf(e.target.value)}
+                handleValue={(e) => console.log(e)}
+                inputType='number'
               />
             </div>
             <Button
               name="Adicionar Comanda"
-              onClick={() => history.push('/bill')}
+              onClick={() => alert("faz nada")}
               Icon={MdAdd}
             />
           </div>
