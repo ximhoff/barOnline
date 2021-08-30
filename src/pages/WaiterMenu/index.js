@@ -94,7 +94,7 @@ export default function WaiterMenu() {
     return (
 
         <div className='scroll-container variable-height '>
-            <Header title='Cardápio' />
+            <Header title='Pedido' />
             <div className='content-wrapper scroll-container variable-height' ref={ref} onMouseDown={onMouseDown}>
                 <div className="item-search-menu">
                     <Input

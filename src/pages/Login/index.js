@@ -39,7 +39,7 @@ export default function Login() {
 
     return (
         <>
-            <Header title="Comanda" />
+            <Header title="Login" />
             <div className='content-wrapper wrapper'>
                 <div className="content">
                     <div className='login-wrapper'>
