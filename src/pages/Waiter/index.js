@@ -14,7 +14,7 @@ export default function Waiter() {
   const [orders, setOrders] = useState([])
   const [filteredOrders, setFilteredOrders] = useState([])
   const [items, setItems] = useState([])
-  const [totals, setTotals] = useState([])
+  // const [totals, setTotals] = useState([])
   const [newCpf, setNewCpf] = useState('')
 
   useEffect(() => {
@@ -26,28 +26,28 @@ export default function Waiter() {
     let response = await fetch(url + '/orders')
     let orders = await response.json();
     const aux = orders.filter(order => order.status === 'open')
-    setOrders(aux);
-    setFilteredOrders(aux);
     response = await fetch(url +'/items')
     let items = await response.json()
     setItems(items);
 
     let totalPrice = [];
     aux.forEach(order => {
-      let aux = 0;
+      let tmp = 0;
       order.items.forEach(i => {
         const item = items.filter(item => item.id === i)[0];
-        aux += item.value;
+        tmp += item.value;
       })
-      totalPrice.push(aux);
+      order.total = tmp;
+      // totalPrice.push(aux);
     })
-    setTotals(totalPrice);
+    // setTotals(totalPrice);
+    setOrders(aux)
+    setFilteredOrders(aux);
   }
-
   const filterItems = (str) => {
     if(str =='') setFilteredOrders(orders);
     else{
-      const data = orders.filter(item => item.table == str);
+      const data = orders.filter(item => item.id == str);
       setFilteredOrders(data);
     }
   }
@@ -56,7 +56,7 @@ export default function Waiter() {
     fetch(url + '/orders/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id:0, costumer:str, mesa:"1", items:[], status:"open",hour:"20:00"})
+      body: JSON.stringify({ id:0, costumer:str, table:"10", items:[], status:"open",hour:"20:00"})
     })
     alert("Comanda criada com sucesso")
     window.location.reload();
@@ -85,7 +85,7 @@ export default function Waiter() {
               orderInfo={{
                 cpf: order.costumer,
                 ID: order.id,
-                total: totals[index],
+                total: order.total,
                 status: order.status
               }} onClick={(e) => history.push('/bill', { order: order })}
               key={index}
