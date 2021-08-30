@@ -3,19 +3,29 @@ import MenuItem from '../MenuItem'
 import Button from '../../components/Button';
 import PropTypes from 'prop-types'
 
-const ItemCategory = ({title, items}) =>{
+const ItemCategory = (props) => {
+
+    const title = props.title
+    const items = props.items
 
     return (
-            <div className='item-category'>
-                <h1 className='category-title'>{title}</h1>
-                <li className='item-list'>
+        <div className='item-category'>
+            <h1 className='category-title'>{title}</h1>
+            <li className='item-list'>
                 {items.map((option, index) => {
-                    return < MenuItem title={option.title} description={option.description} price={option.value}
-                         infoButton={Button}
-                         moneyButton={Button} key={index}/>
+                    return < MenuItem
+                        title={option.title}
+                        description={option.description}
+                        price={option.value}
+                        infoButton={Button}
+                        moneyButton={Button}
+                        key={index}
+                        order={props.order}
+                        itemId={option.id}
+                    />
                 })}
-                </li>
-            </div>
+            </li>
+        </div>
     )
 }
 

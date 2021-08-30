@@ -7,15 +7,15 @@ import Button from '../../components/Button';
 import './index.scss';
 import ScrollView from '../../components/ScrollView';
 import { useHistory } from 'react-router-dom';
-import {Redirect} from 'react-router'
-import {url} from '../../constants'
+import { Redirect } from 'react-router'
+import { url } from '../../constants'
 
 export default function Bill(props) {
   const history = useHistory()
   const [order, setOrder] = useState([])
   const [items, setItems] = useState([])
   const [total, setTotal] = useState(0)
-  const cpf = props.location.state ? props.location.state.cpf : sessionStorage.getItem("cpf")
+  const cpf = props.location.state ? props.location.state.order.costumer : sessionStorage.getItem("cpf")
 
   useEffect(() => {
     getOrder();
@@ -26,7 +26,7 @@ export default function Bill(props) {
     let data = await response.json()
     console.log(data)
     const filtered = data.filter(order => order.costumer == cpf)[0]
-    if(!filtered){
+    if (!filtered) {
       history.push('/login')
       return
     }
@@ -42,7 +42,7 @@ export default function Bill(props) {
     setItems(aux);
     setTotal(sum)
   }
-  if (!sessionStorage.getItem('login')){
+  if (!sessionStorage.getItem('login')) {
     return <Redirect exact to="/login" />;
   }
 
@@ -82,7 +82,7 @@ export default function Bill(props) {
           <div className='new-order-container'>
             <Button
               name="New Item"
-              onClick={() => history.push('/clientmenu')}
+              onClick={() => history.push('/clientmenu', { order: props.location.state.order })}
               Icon={MdAdd}
             />
           </div>

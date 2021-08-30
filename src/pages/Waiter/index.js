@@ -7,10 +7,10 @@ import Button from '../../components/Button';
 import './index.scss';
 import ScrollView from '../../components/ScrollView';
 import { Redirect, useHistory } from 'react-router';
-import {url} from '../../constants'
+import { url } from '../../constants'
 
 export default function Waiter() {
-  const history =useHistory()
+  const history = useHistory()
   const [orders, setOrders] = useState([])
   const [items, setItems] = useState([])
   const [totals, setTotals] = useState([])
@@ -25,7 +25,7 @@ export default function Waiter() {
     let orders = await response.json();
     const aux = orders.filter(order => order.status === 'open')
     setOrders(aux);
-    response = await fetch(url +'/items')
+    response = await fetch(url + '/items')
     let items = await response.json()
     setItems(items);
 
@@ -43,7 +43,7 @@ export default function Waiter() {
 
 
 
-  if (!sessionStorage.getItem('waiter')){
+  if (!sessionStorage.getItem('waiter')) {
     return <Redirect exact to="/login" />;
   }
 
@@ -68,7 +68,7 @@ export default function Waiter() {
                 table: order.table,
                 total: totals[index],
                 status: order.status
-              }} onClick={(e) => history.push('/bill', {cpf:order.costumer}) }
+              }} onClick={(e) => history.push('/bill', { order: order })}
               key={index}
             />
           })} />
