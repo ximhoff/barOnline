@@ -12,7 +12,7 @@ const OrderCard = ({orderInfo, onClick}) =>{
                 </div>
             </div>
             <div className='row'>
-                <div className='col'>Mesa: {orderInfo.table}</div>
+                <div className='col'>ID: {orderInfo.ID}</div>
                 <div className='col'>
                     <div className='right-col'>
                         Status: {orderInfo.status === 'open' ? 'Não Pago' : 'Pago'}
