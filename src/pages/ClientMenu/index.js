@@ -8,8 +8,6 @@ import {useRef} from 'react'
 import {Redirect} from 'react-router'
 import {url} from '../../constants'
 export default function ClientMenu() {
-
-    const [items, setItems] = useState([])
     const [itemsCategories, setItemsCategories] = useState([])
 
     useEffect(() => {
@@ -19,12 +17,11 @@ export default function ClientMenu() {
     const getItems = async () => {
         const response = await fetch(url + '/items')
         let data =  await response.json()
-        setItems(data);
 
         let cat = []
         data.forEach((item) => {
             let idx = cat.indexOf(item)
-            if(idx == -1){
+            if(idx === -1){
                 cat.push({
                     name:item.category,
                     items: [item]

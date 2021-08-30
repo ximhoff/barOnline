@@ -3,87 +3,48 @@ import Header from '../../components/Header';
 import Button from '../../components/Button';
 import './index.scss';
 import { MdSearch } from 'react-icons/md';
-import TextInput from '../../components/TextInput';
+import Input from '../../components/Input';
 import MenuItem from '../../components/MenuItem';
 import useDraggableScroll from 'use-draggable-scroll';
-import { useRef } from 'react'
+import { useRef ,useEffect} from 'react'
 import { Redirect } from 'react-router';
 import {url} from '../../constants'
-export default function WaiterMenu() {
+export default function WaiterMenu({order}) {
 
     const [items, setItems] = useState([])
+    const [filteredItems, setFilteredItems] = useState([])
 
+
+    useEffect(() => {
+      getItems();
+      getUser();
+    }, [])
+  
+  
     const getItems = async () => {
-        const response = await fetch(url + '/items')
-        setItems(await response.json());
+      const response = await fetch(url + '/items')
+      const data = await response.json()
+      setItems(data);
+      setFilteredItems(data);
     }
-
-
+  
+    const filterItems = (str) => {
+      const data = items.filter(item => item.name.toLowerCase().includes(str));
+      setFilteredItems(data);
+    }
+  
+    const getUser = () => {
+      const user = localStorage.getItem('cpf')
+      let data = {}
+      const request = fetch(url+ '/orders?cpf=${user}&status=open', {
+        method: 'POST',
+        body: JSON.stringify(data)
+      })
+    }
 
     const ref = useRef(null);
 
     const { onMouseDown } = useDraggableScroll(ref, { direction: 'vertical' });
-
-    var products = [15];
-    products[0] = {};
-    products[0].title = 'dummy';
-    products[0].description = 'dummy dummy';
-    products[0].value = "10,00";
-
-    products[1] = {};
-    products[1].title = 'dummy';
-    products[1].description = 'dummy dummy dummy';
-    products[1].value = "50,00";
-
-    products[2] = {};
-    products[2].title = 'dummy';
-    products[2].description = 'dummy dummy dummy dummy';
-    products[2].value = "65,00";
-
-    products[3] = {};
-    products[3].title = 'dummy';
-    products[3].description = 'dummy dummy dummy dummy';
-    products[3].value = "40,00";
-
-    products[4] = {};
-    products[4].title = 'dummy';
-    products[4].description = 'dummy dummy dummy dummy';
-    products[4].value = "100,00";
-
-    products[5] = {};
-    products[5].title = 'dummy';
-    products[5].description = 'dummy dummy dummy dummy';
-    products[5].value = "36,00";
-
-    products[6] = {};
-    products[6].title = 'dummy';
-    products[6].description = 'dummy dummy dummy dummy';
-    products[6].value = "32,00";
-
-    products[7] = {};
-    products[7].title = 'dummy';
-    products[7].description = 'dummy dummy dummy dummy';
-    products[7].value = "32,00";
-
-    products[8] = {};
-    products[8].title = 'dummy';
-    products[8].description = 'dummy dummy dummy dummy';
-    products[8].value = "32,00";
-
-    products[9] = {};
-    products[9].title = 'dummy';
-    products[9].description = 'dummy dummy dummy dummy';
-    products[9].value = "32,00";
-
-    products[10] = {};
-    products[10].title = 'dummy';
-    products[10].description = 'dummy dummy dummy dummy';
-    products[10].value = "32,00";
-
-    products[11] = {};
-    products[11].title = 'dummy';
-    products[11].description = 'dummy dummy dummy dummy';
-    products[11].value = "32,00";
 
 
     if (!sessionStorage.getItem('waiter')){
@@ -94,19 +55,19 @@ export default function WaiterMenu() {
     return (
 
         <div className='scroll-container variable-height '>
-            <Header title='Cardápio' />
+            <Header title='Pedido' />
             <div className='content-wrapper scroll-container variable-height' ref={ref} onMouseDown={onMouseDown}>
                 <div className="item-search-menu">
-                    <TextInput
+                    <Input
                         placeholder='Nome do Item'
-                        handleValue={(e) => console.log(e)}
-                        Icon={MdSearch}
+                        handleValue={(e) => filterItems(e.target.value.toLowerCase())}
+                        Icon={MdSearch} inputType='text'
                     />
                 </div>
 
                 <div className='waiter-menu-list' >
-                    {products.map((items, index) => {
-                        return <MenuItem title={items.title} price={items.value}
+                    {filteredItems.map((item, index) => {
+                        return <MenuItem title={item.name} price={item.value}
                             infoButton={Button}
                             moneyButton={Button} key={index}
                         />

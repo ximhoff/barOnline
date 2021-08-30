@@ -23,12 +23,16 @@ export default function Bill() {
   const getOrder = async () => {
     const response = await fetch(url + '/orders')
     let data = await response.json()
-    const filtered = data.filter(order => order.costumer === localStorage.getItem('cpf'))[0]
+    const filtered = data.filter(order => order.costumer === sessionStorage.getItem('cpf'))[0]
+    if(!filtered){
+      history.push('/login')
+      return
+    }
     setOrder(filtered)
     let aux = []
     let sum = 0
     for (let i = 0; i < filtered.items.length; i++) {
-      const response = await fetch(url+`/items/${filtered.items[i]}`)
+      const response = await fetch(`{url}/items/${filtered.items[i]}`)
       aux.push(await response.json())
       sum += aux[i].value
     }

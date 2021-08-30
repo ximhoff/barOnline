@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState ,useEffect} from 'react'
 import Header from '../../components/Header'
 import Button from '../../components/Button'
 import {
@@ -30,6 +30,14 @@ export default function Drinks() {
   const [tastes, setTastes] = useState([])
   const [fruitsAndBarries, setFruitsAndBarries] = useState([])
 
+  useEffect(() => {
+      getGlassTypes()
+      getTastes()
+      getBases()
+      getTastes()
+      getFruitsAndBarries()
+  },[])
+
   const handleCheckbox = (e) => {
     let data = drinkItems
     const index = data.indexOf(e.target.value)
@@ -43,11 +51,12 @@ export default function Drinks() {
   }
 
   const handleGlassType = (e) => {
+    console.log(e.target.value)
     setGlassType(e.target.value)
   }
 
   const getGlassTypes = async () => {
-    const response = await fetch(url +'/glassType')
+    const response = await fetch(url +'/glassTypes')
     setGlassTypes(await response.json());
   }
 
@@ -85,27 +94,19 @@ export default function Drinks() {
             </label>
             {!glassTypeIsEnable ? <MdArrowForward /> : <MdArrowDownward />}
           </div>
-          {glassTypeIsEnable &&
-            <>
-              <div className="dropped">
+          {glassTypes.map((glass, index) => {
+              return (
+              <div className="dropped" style={{display:!glassTypeIsEnable ? 'none' : 'inherit'}} key={index}>
                 <Radio
-                  value="Copo 1"
-                  checked={glassType === "Copo 1"}
+                  value={glass.name}
+                  checked={glassType === glass.name}
                   color='primary'
                   onChange={handleGlassType}
                 />
-                <label>Copo 1</label>
+                <label>{glass.name}</label>
               </div>
-              <div className="dropped">
-                <Radio
-                  value="Copo 2"
-                  checked={glassType === "Copo 2"}
-                  color='primary'
-                  onChange={handleGlassType}
-                />
-                <label>Copo 2</label>
-              </div>
-            </>
+              )
+            })
           }
           <div
             className="item"
@@ -115,30 +116,22 @@ export default function Drinks() {
             </label>
             {!baseIsEnable ? <MdArrowForward /> : <MdArrowDownward />}
           </div>
-          {baseIsEnable &&
-            <>
-              <div
-                className="dropped">
+          {
+            bases.map((base, index) => {
+                return (
+                <div className="dropped" style={{display:!baseIsEnable ? 'none' : 'inherit'}} key={index}>
 
                 <Checkbox
                   onChange={(e) => handleCheckbox(e)}
                   color="primary"
-                  value={'teste 1'}
+                  value={base.name}
                 />
-                Teste 1
+               { base.name}
               </div>
-              <div
-                className="dropped">
-                <Checkbox
-                  onChange={(e) => handleCheckbox(e)}
-                  color="primary"
-                  value={'teste 2'}
-                />
-                Teste 2
-              </div>
-            </>
+                )
+            })
           }
-
+        
           <div
             className="item"
             onClick={(e) => setTastesIsEnable(!tastesIsEnable)}>
@@ -147,8 +140,20 @@ export default function Drinks() {
             </label>
             {!tastesIsEnable ? <MdArrowForward /> : <MdArrowDownward />}
           </div>
-          {tastesIsEnable &&
-            <div className="dropped">asdfasdf</div>
+          {
+            tastes.map((taste, index) => {
+                return (
+                <div className="dropped" style={{display:!tastesIsEnable ? 'none' : 'inherit'}} key={index}>
+
+                <Checkbox
+                  onChange={(e) => handleCheckbox(e)}
+                  color="primary"
+                  value={taste.name}
+                />
+               { taste.name}
+              </div>
+                )
+            })
           }
           <div
             onClick={(e) => setFruitAndBarriesIsEnable(!fruitAndBarriesIsEnable)}
@@ -158,8 +163,20 @@ export default function Drinks() {
             </label>
             {!fruitAndBarriesIsEnable ? <MdArrowForward /> : <MdArrowDownward />}
           </div>
-          {fruitAndBarriesIsEnable &&
-            <div className="dropped">asdfasdf</div>
+          {
+            fruitsAndBarries.map((fb, index) => {
+                return (
+                <div className="dropped" style={{display:!fruitAndBarriesIsEnable ? 'none' : 'inherit'}} key={index}>
+
+                <Checkbox
+                  onChange={(e) => handleCheckbox(e)}
+                  color="primary"
+                  value={fb.name}
+                />
+               { fb.name}
+              </div>
+                )
+            })
           }
         </div>
         <div className='new-item'>
